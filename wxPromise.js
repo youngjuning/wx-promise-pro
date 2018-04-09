@@ -31,17 +31,6 @@ const wxPromise = () => {
     wx.pro[item] = promisify(wx[item])
   })
 
-  // 预览单个图片
-  wx.pro.previewThisImage = (images) => {
-    return new Promise((resolve, reject) => {
-      wx.previewImage({
-        urls: images,
-        success: resolve,
-        fail: reject
-      })
-    })
-  }
-
   // 顶部提示框
   wx.pro.showTopTips = (option,that) => {
     return new Promise((resolve, reject) =>{
