@@ -12,17 +12,17 @@
 
 > 后续会补全常用的 API ，如果你觉得常用的 API 没有收录，可以发issue，也可以 fork。
 
-| api                    | 解释                                                         |
-| ---------------------- | ------------------------------------------------------------ |
-| login                  | 登录                                                         |
-| getUserInfo            | 获取用户信息                                                 |
-| request                | 网络请求                                                     |
-| getSystemInfo          | 获取设备信息                                                 |
-| getImageInfo           | 根据地质获取图                                               |
-| previewImage           | 预览图片                                                     |
-| saveImageToPhotosAlbum | 将图片保存到系统相册                                         |
-| chooseVideo            | 拍摄视频或从手机相册中选视频，返回视频的临时文件路径         |
-| canvasToTempFilePath   | 当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径 |
+| api                       | 解释                                                               |
+| ------------------------- | ------------------------------------------------------------------ |
+| wx.login                  | 调用接口 `wx.login()` 获取临时登录凭证（code）                     |
+| wx.getUserInfo            | 获取用户信息，withCredentials 为 true 时需要先调用 `wx.login` 接口 |
+| wx.request                | 发起网络请求                                                       |
+| wx.getSystemInfo          | 异步获取系统信息                                                   |
+| wx.getImageInfo           | 根据图片路径获取图片信息                                           | 
+| wx.previewImage           | 预览图片                                                           |
+| wx.saveImageToPhotosAlbum | 将图片保存到系统相册                                               |
+| wx.chooseVideo            | 拍摄视频或从手机相册中选视频，返回视频的临时文件路径               |
+| wx.canvasToTempFilePath   | 当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径       |
 
 ## 扩展的 API
 
