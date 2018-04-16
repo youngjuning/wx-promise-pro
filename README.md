@@ -17,9 +17,9 @@
 ```js
 // 将 promise 方法 挂载到 wx.pro 对象上
 for (var variable in wx) {
-	if (wx.hasOwnProperty(variable)) {
-		wx.pro[variable] = promisify(wx[variable])
-	}
+  if (wx.hasOwnProperty(variable)) {
+    wx.pro[variable] = promisify(wx[variable])
+  }
 }
 ```
 
@@ -28,14 +28,14 @@ for (var variable in wx) {
 ```js
 // 演示 wxPromise 的能力
 wx.pro.request({
-	url: 'https://cnodejs.org/api/v1/topics',
-	data: {},
-	method: 'GET',
-	header: {'content-type': 'application/json'}
+  url: 'https://cnodejs.org/api/v1/topics',
+  data: {},
+  method: 'GET',
+  header: {'content-type': 'application/json'}
 }).then((res) => {
-	console.log(res)
+  console.log(res)
 }, (error) => {
-	console.log(error)
+  console.log(error)
 })
 ```
 
@@ -56,7 +56,7 @@ wx.pro.request({
 2. 这个方法是需要视图层配合的，如果你使用的是 `weui-wxss`，那么在页面中引入下面的代码即可：
 
 ```html
-	<view class="weui-toptips weui-toptips_warn" wx:if="{{topTips.show}}">{{topTips.content}}</view>
+<view class="weui-toptips weui-toptips_warn" wx:if="{{topTips.show}}">{{topTips.content}}</view>
 ```
 
 3. 你如果没有使用 `weui-wxss` 也没关系，自己定义样式，只要数据绑定正确即可。
