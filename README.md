@@ -8,21 +8,20 @@
 
 本库分为两个部分，一部分是将微信小程序原有的API promise 化，一部分是我自己封装的常用方法。两部分的方法都是挂载在 `wx.pro` 对象下，使用的时候直接使用 `wx.pro` 对象调用即可。
 
-## 支持的微信 API
+## 支持所有的微信 API
 
-> 后续会补全常用的 API ，如果你觉得常用的 API 没有收录，可以发issue，也可以 fork。
+在老版本中，需要手动注册 api ，才能支持，这样模式弊端很明显（升级效率极低）。
 
-| api                       | 解释                                                               |
-| ------------------------- | ------------------------------------------------------------------ |
-| wx.login                  | 调用接口 `wx.login()` 获取临时登录凭证（code）                     |
-| wx.getUserInfo            | 获取用户信息，withCredentials 为 true 时需要先调用 `wx.login` 接口 |
-| wx.request                | 发起网络请求                                                       |
-| wx.getSystemInfo          | 异步获取系统信息                                                   |
-| wx.getImageInfo           | 根据图片路径获取图片信息                                           |
-| wx.previewImage           | 预览图片                                                           |
-| wx.saveImageToPhotosAlbum | 将图片保存到系统相册                                               |
-| wx.chooseVideo            | 拍摄视频或从手机相册中选视频，返回视频的临时文件路径               |
-| wx.canvasToTempFilePath   | 当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径       |
+从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api， `wx.pro` 全部支持：
+
+```js
+// 将 promise 方法 挂载到 wx.pro 对象上
+for (var variable in wx) {
+	if (wx.hasOwnProperty(variable)) {
+		wx.pro[variable] = promisify(wx[variable])
+	}
+}
+```
 
 ### 示例代码
 
