@@ -19,7 +19,7 @@ const wxPromise = () => {
       wx.pro[variable] = promisify(wx[variable])
     }
   }
-  
+
   // 顶部提示框
   wx.pro.showTopTips = (option,that) => {
     return new Promise((resolve, reject) =>{
@@ -58,6 +58,19 @@ const wxPromise = () => {
         }
       })
     })
+  }
+
+  // 初始化 echarts
+  wx.pro.initChart = (option,echarts) => {
+    return (canvas, width, height) => {
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height
+      });
+      canvas.setChart(chart)
+      chart.setOption(option)
+      return chart
+    }
   }
 }
 
