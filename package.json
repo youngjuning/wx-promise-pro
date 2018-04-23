@@ -1,0 +1,30 @@
+{
+  "name": "wx-promise-pro",
+  "version": "2.0.2",
+  "description": "强大的、优雅的小程序 Promise 库",
+  "main": "wxPromise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngjuning/wxPromise.git"
+  },
+  "keywords": [
+    "promise",
+    "es6",
+    "then",
+    "catch",
+    "finally",
+    "小程序",
+    "weapp",
+    "miniapp",
+    "weixin"
+  ],
+  "author": "youngjuning",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/youngjuning/wxPromise/issues"
+  },
+  "homepage": "https://github.com/youngjuning/wxPromise#readme"
+}
