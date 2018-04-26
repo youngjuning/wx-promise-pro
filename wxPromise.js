@@ -11,14 +11,15 @@ const promisify = (api) => {
 }
 
 wx.pro = {}
-// wx.on...没有 success、fail、complete 属性
+// ...Sync 没有 success、fail、complete 属性
+// wx.on... 没有 success、fail、complete 属性
 // wx.create... 除了 wx.createBLEConnection 都没有 success、fail、complete 属性
-// wx.getBackgroundAudioManager 都没有 success、fail、complete 属性
+// getRecorderManager、stopRecord、pauseVoice、stopVoice、pauseBackgroundAudio、stopBackgroundAudio、getBackgroundAudioManager 都没有 success、fail、complete 属性
 const wxPromise = () => {
   // 将 promise 方法 挂载到 wx.pro 对象上
   for (let variable in wx) {
     if (wx.hasOwnProperty(variable)) {
-      if (/^on|^create/.test(variable) && variable !== 'createBLEConnection' || variable === 'getBackgroundAudioManager') {
+      if (/^on|^create|Sync$/.test(variable) && variable !== 'createBLEConnection' || variable === 'getRecorderManager' || variable === 'stopRecord' || variable === 'pauseVoice' || variable === 'stopVoice' || variable === 'pauseBackgroundAudio' || variable === 'stopBackgroundAudio' || variable === 'getBackgroundAudioManager') {
         wx.pro[variable] = wx[variable]
       } else {
         wx.pro[variable] = promisify(wx[variable])
