@@ -1,6 +1,10 @@
-# wxPromise
+> 强大的、优雅的 小程序 Promise 库
 
-强大的、优雅的 小程序 Promise 库
+## npm
+
+```bash
+npm i wx-promise-pro
+```
 
 ## 使用方法
 
