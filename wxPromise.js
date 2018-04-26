@@ -17,12 +17,12 @@ wx.pro = {}
 // getRecorderManager、stopRecord、pauseVoice、stopVoice、pauseBackgroundAudio、stopBackgroundAudio、getBackgroundAudioManager 都没有 success、fail、complete 属性
 const wxPromise = () => {
   // 将 promise 方法 挂载到 wx.pro 对象上
-  for (let variable in wx) {
-    if (wx.hasOwnProperty(variable)) {
-      if (/^on|^create|Sync$/.test(variable) && variable !== 'createBLEConnection' || variable === 'getRecorderManager' || variable === 'stopRecord' || variable === 'pauseVoice' || variable === 'stopVoice' || variable === 'pauseBackgroundAudio' || variable === 'stopBackgroundAudio' || variable === 'getBackgroundAudioManager') {
-        wx.pro[variable] = wx[variable]
+  for (let key in wx) {
+    if (wx.hasOwnProperty(key)) {
+      if (/^on|^create|Sync$/.test(key) && key !== 'createBLEConnection' || key === 'getRecorderManager' || key === 'stopRecord' || key === 'pauseVoice' || key === 'stopVoice' || key === 'pauseBackgroundAudio' || key === 'stopBackgroundAudio' || key === 'getBackgroundAudioManager') {
+        wx.pro[key] = wx[key]
       } else {
-        wx.pro[variable] = promisify(wx[variable])
+        wx.pro[key] = promisify(wx[key])
       }
     }
   }
