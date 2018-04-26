@@ -96,6 +96,60 @@ const wxPromise = () => {
         })
       })
     })
+  },
+
+  // 保存图片到系统相册。需要用户授权 scope.writePhotosAlbum
+  wx.pro.saveImageToPhotosAlbum = (tempFilePath) => {
+    return new Promise((resolve, reject) =>{
+      wx.getSetting({
+        success: (res) => {
+          if (!res.authSetting['scope.writePhotosAlbum']) {
+            // 没有授权，向用户发起授权请求
+            wx.authorize({
+              scope: 'scope.writePhotosAlbum',
+              success: () => {
+                // 用户同意授权，调用 api 保存图片
+                wx.saveImageToPhotosAlbum({
+                  filePath: tempFilePath,
+                  success(res) {
+                    resolve(res)
+                  },
+                  fail(err) {
+                    reject(err)
+                  }
+                })
+              },
+              fail: err => {
+                // 用户拒绝授权,提醒用户打开设置页面
+                wx.hideLoading()
+                wx.pro.showModal({
+                  title: '温馨提示',
+                  content: '请授权系统使用保存图片接口',
+                  confirmText: '知道了',
+                  showCancel: false
+                }).then(res => {
+                  wx.openSetting()
+                })
+              }
+            })
+          } else {
+            // 已经授权，直接调用 api 保存图片
+            wx.saveImageToPhotosAlbum({
+              filePath: tempFilePath,
+              success(res) {
+                resolve(res)
+              },
+              fail(err) {
+                reject(err)
+              }
+            })
+          }
+        },
+        fail: (err) => {
+          reject(err)
+        }
+      })
+    })
   }
 }
 
