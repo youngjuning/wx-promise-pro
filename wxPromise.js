@@ -160,6 +160,40 @@ const wxPromise = () => {
   },
 
   /**
+   * 绘制自动换行的字符串
+   * @param  {[object]} canvasContext  [canvas 绘图上下文]
+   * @param  {[string]} text           [在画布上输出的文本]
+   * @param  {[number]} x              [绘制文本的左上角x坐标位置]
+   * @param  {[number]} y              [绘制文本的左上角y坐标位置]
+   * @param  {[number]} maxWidth       [需要绘制的最大宽度]
+   */
+  wx.pro.fillText =(canvasContext,text,x,y,maxWidth) => {
+
+    var chr = text.split('')
+    var temp = ''
+    var row = []
+    for(var i = 0; i < chr.length; i++){
+      if(canvasContext.measureText(temp).width >= maxWidth){
+        row.push(temp)
+        temp = ''
+      }
+      temp += chr[i]
+    }
+    row.push(temp)
+    let index = 0
+    for(var j = 0; j < row.length; j++){
+      if (/\n/.test(row[j])) {
+        let rowText = row[j].split('\n')
+        rowText.forEach(item => {
+          index ++
+          canvasContext.fillText(item,x,y+(j+index)*20)
+        })
+      } else {
+        canvasContext.fillText(row[j],x,y+(j+index)*20)
+      }
+    }
+  }
+  /**
    * 小程序 canvas 写字自动换行解决方案
    * @param  {[string]} text     [在画布上输出的文本]
    * @param  {[number]} x        [绘制文本的左上角x坐标位置]
@@ -167,7 +201,7 @@ const wxPromise = () => {
    * @param  {[number]} column   [一行多少字,如果为0，则代表不自动换行]
    * @param  {[number]} maxWidth [需要绘制的最大宽度，可选]
    */
-  wx.pro.fillText = (canvasContext,text,x,y,column,maxWidth) => {
+  wx.pro.drawText = (canvasContext,text,x,y,column,maxWidth) => {
     if (column === 0) {
       if (maxWidth) {
         canvasContext.fillText(text,x,y,maxWidth)
