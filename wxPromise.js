@@ -150,6 +150,31 @@ const wxPromise = () => {
         }
       })
     })
+  },
+
+  /**
+   * 小程序 canvas 写字自动换行解决方案
+   * @param  {[string]} text     [在画布上输出的文本]
+   * @param  {[number]} x        [绘制文本的左上角x坐标位置]
+   * @param  {[number]} y        [绘制文本的左上角y坐标位置]
+   * @param  {[number]} column   [一行多少字]
+   * @param  {[number]} maxWidth [需要绘制的最大宽度，可选]
+   */
+  wx.pro.fillText = (text,x,y,column,maxWidth) => {
+    let rows = 0
+    if (text.length%column >0) {
+      rows = parseInt(text.length/column)+1
+    } else {
+      rows = parseInt(text.length/column)
+    }
+    for (var i = 0; i < rows; i++) {
+      let rowText = text.substring(i*column,i*column+column)
+      if (maxWidth) {
+        ctx.fillText(rowText,x,y+i*column,maxWidth)
+      } else {
+        ctx.fillText(rowText,x,y+i*column)
+      }
+    }
   }
 }
 
