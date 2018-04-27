@@ -77,3 +77,9 @@ wx.pro.request({
 * [ ] 排除所有的同步 API，让用户可以彻底抛弃 wx 对象
 * [ ] 支持 ES2017 的 [async 函数](http://t.cn/RyUUVvA)
 * [x] 支持 ES2018 的 [finally](http://t.cn/RuJyewc)
+
+## 赞赏
+
+赞赏是对我最大的支持！！
+
+![](http://bmob-cdn-17431.b0.upaiyun.com/2018/04/27/bac6612a40b52a098018fe6fe069fbc3.jpg)
