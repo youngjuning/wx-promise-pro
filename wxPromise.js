@@ -186,10 +186,10 @@ const wxPromise = () => {
         let rowText = row[j].split('\n')
         rowText.forEach(item => {
           index ++
-          canvasContext.fillText(item,x,y+(j+index)*20)
+          canvasContext.fillText(item,x,y+(j+index)*22)
         })
       } else {
-        canvasContext.fillText(row[j],x,y+(j+index)*20)
+        canvasContext.fillText(row[j],x,y+(j+index)*22)
       }
     }
   }
