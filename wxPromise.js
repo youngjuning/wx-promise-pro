@@ -80,24 +80,6 @@ const wxPromise = () => {
     }
   },
 
-  // 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
-  // TODO: 增加更多的参数配置
-  wx.pro.canvasToTempFilePath = (canvasContext) => {
-    return new Promise((resolve, reject) =>{
-      canvasContext.draw(true, () => {
-        wx.canvasToTempFilePath({
-          canvasId: 'card',
-          success: (res) => {
-            resolve(res)
-          },
-          fail: (err)=> {
-            reject(err)
-          }
-        })
-      })
-    })
-  },
-
   // 保存图片到系统相册。需要用户授权 scope.writePhotosAlbum
   wx.pro.saveImageToPhotosAlbum = (tempFilePath) => {
     return new Promise((resolve, reject) =>{
@@ -152,6 +134,24 @@ const wxPromise = () => {
     })
   },
 
+  // 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
+  // TODO: 增加更多的参数配置
+  wx.pro.canvasToTempFilePath = (canvasContext) => {
+    return new Promise((resolve, reject) =>{
+      canvasContext.draw(true, () => {
+        wx.canvasToTempFilePath({
+          canvasId: 'card',
+          success: (res) => {
+            resolve(res)
+          },
+          fail: (err)=> {
+            reject(err)
+          }
+        })
+      })
+    })
+  },
+
   /**
    * 小程序 canvas 写字自动换行解决方案
    * @param  {[string]} text     [在画布上输出的文本]
@@ -160,7 +160,7 @@ const wxPromise = () => {
    * @param  {[number]} column   [一行多少字]
    * @param  {[number]} maxWidth [需要绘制的最大宽度，可选]
    */
-  wx.pro.fillText = (text,x,y,column,maxWidth) => {
+  wx.pro.fillText = (canvasContext,text,x,y,column,maxWidth) => {
     let rows = 0
     if (text.length%column >0) {
       rows = parseInt(text.length/column)+1
@@ -170,9 +170,9 @@ const wxPromise = () => {
     for (var i = 0; i < rows; i++) {
       let rowText = text.substring(i*column,i*column+column)
       if (maxWidth) {
-        ctx.fillText(rowText,x,y+i*column,maxWidth)
+        canvasContext.fillText(rowText,x,y+i*column,maxWidth)
       } else {
-        ctx.fillText(rowText,x,y+i*column)
+        canvasContext.fillText(rowText,x,y+i*column)
       }
     }
   }
