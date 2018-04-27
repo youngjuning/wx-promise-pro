@@ -82,4 +82,4 @@ wx.pro.request({
 
 赞赏是对我最大的支持！！
 
-![](http://bmob-cdn-17431.b0.upaiyun.com/2018/04/27/bac6612a40b52a098018fe6fe069fbc3.jpg)
+<img src="http://t.cn/RuiypOJ" style="width:300px;height:300px">
