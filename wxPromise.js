@@ -187,7 +187,6 @@ const wxPromise = () => {
       let rowText = text.substring(i*column,i*column+column)
       if (/\n/.test(rowText) || rowText.length > column) {
         rowText = rowText.split('\n')
-        console.log(rowText)
         rowText.forEach(item => {
           index ++
           if (maxWidth) {
@@ -198,9 +197,9 @@ const wxPromise = () => {
         })
       } else {
         if (maxWidth) {
-          canvasContext.fillText(rowText,x,y+(i+index)*column,maxWidth)
+          canvasContext.fillText(rowText,x,y+(i+index+2)*column,maxWidth)
         } else {
-          canvasContext.fillText(rowText,x,y+(i+index)*column)
+          canvasContext.fillText(rowText,x,y+(i+index+2)*column)
         }
       }
     }
