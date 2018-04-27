@@ -167,7 +167,7 @@ const wxPromise = () => {
    * @param  {[number]} y              [绘制文本的左上角y坐标位置]
    * @param  {[number]} maxWidth       [需要绘制的最大宽度]
    */
-  wx.pro.fillText =(canvasContext,text,x,y,maxWidth) => {
+  wx.pro.fillText =(canvasContext,text,size,x,y,maxWidth) => {
 
     var chr = text.split('')
     var temp = ''
@@ -186,10 +186,10 @@ const wxPromise = () => {
         let rowText = row[j].split('\n')
         rowText.forEach(item => {
           index ++
-          canvasContext.fillText(item,x,y+(j+index)*26)
+          canvasContext.fillText(item,x,y+(j+index)*(size+6))
         })
       } else {
-        canvasContext.fillText(row[j],x,y+(j+index)*26)
+        canvasContext.fillText(row[j],x,y+(j+index)*(size+6))
       }
     }
   }
