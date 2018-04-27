@@ -164,22 +164,44 @@ const wxPromise = () => {
    * @param  {[string]} text     [在画布上输出的文本]
    * @param  {[number]} x        [绘制文本的左上角x坐标位置]
    * @param  {[number]} y        [绘制文本的左上角y坐标位置]
-   * @param  {[number]} column   [一行多少字]
+   * @param  {[number]} column   [一行多少字,如果为0，则代表不自动换行]
    * @param  {[number]} maxWidth [需要绘制的最大宽度，可选]
    */
   wx.pro.fillText = (canvasContext,text,x,y,column,maxWidth) => {
+    if (column === 0) {
+      if (maxWidth) {
+        canvasContext.fillText(text,x,y,maxWidth)
+      } else {
+        canvasContext.fillText(text,x,y)
+      }
+      return
+    }
     let rows = 0
     if (text.length%column >0) {
       rows = parseInt(text.length/column)+1
     } else {
       rows = parseInt(text.length/column)
     }
+    let index = 0
     for (var i = 0; i < rows; i++) {
       let rowText = text.substring(i*column,i*column+column)
-      if (maxWidth) {
-        canvasContext.fillText(rowText,x,y+i*column,maxWidth)
+      if (/\n/.test(rowText) || rowText.length > column) {
+        rowText = rowText.split('\n')
+        console.log(rowText)
+        rowText.forEach(item => {
+          index ++
+          if (maxWidth) {
+            canvasContext.fillText(item,x,y+(i+index)*column,maxWidth)
+          } else {
+            canvasContext.fillText(item,x,y+(i+index)*column)
+          }
+        })
       } else {
-        canvasContext.fillText(rowText,x,y+i*column)
+        if (maxWidth) {
+          canvasContext.fillText(rowText,x,y+(i+index)*column,maxWidth)
+        } else {
+          canvasContext.fillText(rowText,x,y+(i+index)*column)
+        }
       }
     }
   }
