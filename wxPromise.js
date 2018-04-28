@@ -168,7 +168,6 @@ const wxPromise = () => {
    * @param  {[number]} maxWidth       [需要绘制的最大宽度]
    */
   wx.pro.fillText =(canvasContext,text,size,x,y,maxWidth) => {
-
     var chr = text.split('')
     var temp = ''
     var row = []
@@ -180,16 +179,18 @@ const wxPromise = () => {
       temp += chr[i]
     }
     row.push(temp)
+    let iv = 0
     let index = 0
+    if(row.length <= 2){iv = 4}else if(row.length <= 4){iv = 3}else if(row.length == 5){iv = 2}else if (row.length == 6) {iv = 1}
     for(var j = 0; j < row.length; j++){
       if (/\n/.test(row[j])) {
         let rowText = row[j].split('\n')
         rowText.forEach(item => {
           index ++
-          canvasContext.fillText(item,x,y+(j+index)*(size+6))
+          canvasContext.fillText(item,x,y+(j+index+iv)*(size+8))
         })
       } else {
-        canvasContext.fillText(row[j],x,y+(j+index)*(size+6))
+        canvasContext.fillText(row[j],x,y+(j+index+iv)*(size+8))
       }
     }
   }
