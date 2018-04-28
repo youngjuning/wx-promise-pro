@@ -33,6 +33,15 @@ const wxPromise = () => {
       }
     }
   }
+  // 匹配手机号码
+  wx.pro.matchPhoneNumber = (phoneNumber) => {
+    let reg = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+    if (reg.test(phoneNumber)) {
+      return true
+    } else {
+      return false
+    }
+  },
 
   // 顶部提示框
   wx.pro.showTopTips = (option,that) => {
