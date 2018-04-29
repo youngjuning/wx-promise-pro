@@ -32,15 +32,20 @@ const promisify = (api) => {
 }
 
 wx.pro = {}
-// ...Sync 没有 success、fail、complete 属性
-// wx.on... 没有 success、fail、complete 属性
-// wx.create... 除了 wx.createBLEConnection 都没有 success、fail、complete 属性
-// getRecorderManager、stopRecord、pauseVoice、stopVoice、pauseBackgroundAudio、stopBackgroundAudio、getBackgroundAudioManager 都没有 success、fail、complete 属性
+// 以下是没有 success、fail、complete 属性的api
+// 1、...Sync【√】
+// 2、on...【√】
+// 3、create... 除了 createBLEConnection【√】
+// 4、...Manager【√】
+// 5、pause...【√】
+// 6、stopRecord、stopVoice、stopBackgroundAudio、stopPullDownRefresh【√】
+// 7、hideKeyboard、hideToast、hideLoading、showNavigationBarLoading、hideNavigationBarLoading【√】
+// 8、canIUse、navigateBack、closeSocket、pageScrollTo、drawCanvas【√】
 const wxPromise = () => {
   // 将 promise 方法 挂载到 wx.pro 对象上
   for (let key in wx) {
     if (wx.hasOwnProperty(key)) {
-      if (/^on|^create|Sync$/.test(key) && key !== 'createBLEConnection' || key === 'getRecorderManager' || key === 'stopRecord' || key === 'pauseVoice' || key === 'stopVoice' || key === 'pauseBackgroundAudio' || key === 'stopBackgroundAudio' || key === 'getBackgroundAudioManager') {
+      if (/^on|^create|Sync$|Manager$|^pause/.test(key) && key !== 'createBLEConnection' || key === 'stopRecord' || key === 'stopVoice' || key === 'stopBackgroundAudio' || key === 'stopPullDownRefresh' || key === 'hideKeyboard' || key === 'hideToast' || key === 'hideLoading' || key === 'showNavigationBarLoading' || key === 'hideNavigationBarLoading' || key === 'canIUse' || key === 'navigateBack' || key === 'closeSocket' || key === 'closeSocket' || key === 'pageScrollTo' || key === 'drawCanvas') {
         wx.pro[key] = wx[key]
       } else {
         wx.pro[key] = promisify(wx[key])
@@ -214,51 +219,6 @@ const wxPromise = () => {
         })
       } else {
         canvasContext.fillText(row[j],x,y+(j+index+iv)*(size+4))
-      }
-    }
-  }
-  /**
-   * 小程序 canvas 写字自动换行解决方案
-   * @param  {[string]} text     [在画布上输出的文本]
-   * @param  {[number]} x        [绘制文本的左上角x坐标位置]
-   * @param  {[number]} y        [绘制文本的左上角y坐标位置]
-   * @param  {[number]} column   [一行多少字,如果为0，则代表不自动换行]
-   * @param  {[number]} maxWidth [需要绘制的最大宽度，可选]
-   */
-  wx.pro.drawText = (canvasContext,text,x,y,column,maxWidth) => {
-    if (column === 0) {
-      if (maxWidth) {
-        canvasContext.fillText(text,x,y,maxWidth)
-      } else {
-        canvasContext.fillText(text,x,y)
-      }
-      return
-    }
-    let rows = 0
-    if (text.length%column >0) {
-      rows = parseInt(text.length/column)+1
-    } else {
-      rows = parseInt(text.length/column)
-    }
-    let index = 0
-    for (var i = 0; i < rows; i++) {
-      let rowText = text.substring(i*column,i*column+column)
-      if (/\n/.test(rowText) || rowText.length > column) {
-        rowText = rowText.split('\n')
-        rowText.forEach(item => {
-          index ++
-          if (maxWidth) {
-            canvasContext.fillText(item,x,y+(i+index)*column,maxWidth)
-          } else {
-            canvasContext.fillText(item,x,y+(i+index)*column)
-          }
-        })
-      } else {
-        if (maxWidth) {
-          canvasContext.fillText(rowText,x,y+(i+index+2)*column,maxWidth)
-        } else {
-          canvasContext.fillText(rowText,x,y+(i+index+2)*column)
-        }
       }
     }
   }
