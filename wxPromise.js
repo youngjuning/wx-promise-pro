@@ -1,3 +1,17 @@
+/*
+* wxPromise
+* https://github.com/youngjuning/wxPromise
+*
+* NPM INSTALL
+* https://www.npmjs.com/package/wx-promise-pro
+*
+* Copyright 2018, youngjuning
+* http://www.wakeuptocode.me
+*
+* Licensed under the MIT license:
+* https://opensource.org/licenses/MIT
+*/
+
 // 把普通函数变成promise函数
 const promisify = (api) => {
   return (options, ...params) => {
