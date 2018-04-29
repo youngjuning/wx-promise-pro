@@ -52,10 +52,55 @@ const wxPromise = () => {
       }
     }
   }
+  // 匹配中文字符
+  wx.pro.matchChinese = (chinese) => {
+    let reg = /[\u4e00-\u9fa5]/gm
+    if (reg.test(chinese)) {
+      return true
+    } else {
+      return false
+    }
+  },
+  // 匹配email地址
+  wx.pro.matchEmail = (email) => {
+    let reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
+    if (reg.test(email)) {
+      return true
+    } else {
+      return false
+    }
+  },
+  // 匹配URL地址
+  wx.pro.matchUrl = (url) => {
+    let reg = /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i
+    if (reg.test(url)) {
+      return true
+    } else {
+      return false
+    }
+  },
   // 匹配手机号码
   wx.pro.matchPhoneNumber = (phoneNumber) => {
     let reg = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
     if (reg.test(phoneNumber)) {
+      return true
+    } else {
+      return false
+    }
+  },
+  // 匹配身份证号
+  wx.pro.matchCardId= (cardid) => {
+    let reg = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
+    if (reg.test(cardid)) {
+      return true
+    } else {
+      return false
+    }
+  },
+  // 匹配邮编号
+  wx.pro.matchMail= (mail) => {
+    let reg = /^[1-9]\d{5}(?!\d)$/
+    if (reg.test(mail)) {
       return true
     } else {
       return false
