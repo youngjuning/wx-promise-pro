@@ -16,6 +16,14 @@ npm i wx-promise-pro -D
 
 本库分为两个部分，一部分是将微信小程序原有的API promise 化，一部分是我自己封装的常用方法。两部分的方法都是挂载在 `wx.pro` 对象下，使用的时候直接使用 `wx.pro` 对象调用即可。
 
+## 支持 async、await
+
+> 由于 wxPromise 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
+
+全局或局部引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
+
+> 注意：导入 regeneratorRuntime 和原本 `wx.pro` 对象是不冲突的，你如果用不到 async 函数，那么可以不导入 regeneratorRuntime
+
 ## 支持所有的微信小程序 异步API
 
 在老版本中，需要手动注册 api ，才能支持，这样模式弊端很明显（升级效率极低）。
@@ -75,7 +83,7 @@ wx.pro.request({
 
 * [ ] 完善扩展 API 的文档
 * [ ] 排除所有的同步 API，让用户可以彻底抛弃 wx 对象
-* [ ] 支持 ES2017 的 [async 函数](http://t.cn/RyUUVvA)
+* [x] 支持 ES2017 的 [async 函数](http://t.cn/RyUUVvA)
 * [x] 支持 ES2018 的 [finally](http://t.cn/RuJyewc)
 
 ## 赞赏
@@ -83,3 +91,27 @@ wx.pro.request({
 赞赏是对我最大的支持！！
 
 <img src="http://t.cn/RuKLpOz">
+
+## License
+
+MIT License
+
+Copyright (c) 2018 youngjuning
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
