@@ -1,3 +1,6 @@
+## demo
+
+```js
 import regeneratorRuntime from '/utils/regenerator-runtime'
 import './utils/wxPromise'
 
@@ -63,3 +66,4 @@ App({
     })
   }
 })
+```
