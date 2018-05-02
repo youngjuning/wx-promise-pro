@@ -69,13 +69,17 @@ wx.pro.request({
 
 1. [showTopTips(OBJECT,this)](./detail/showTopTips.md)：顶部提示框
 2. [match(type,str)](./detail/match.md)：正则匹配方法
+3. initChart(option,echarts)：初始化 Echarts 的方法
+4. saveImageToPhotosAlbum(tempFilePath)：带有授权解决方案的保存图片到系统相册方法
+5. canvasToTempFilePath(canvasContext)：把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
+6. fillText(canvasContext,text,size,x,y,maxWidth)：canvas绘制自动换行的字符串的方法
 
 ## TODO
 
 * [x] 排除所有的同步 API，让用户可以彻底抛弃 wx 对象
 * [x] 支持 ES2017 的 [async 函数](http://t.cn/RyUUVvA)
 * [x] 支持 ES2018 的 [finally](http://t.cn/RuJyewc)
-* [ ] 完善扩展 API 的文档
+* [ ] 编写所有扩展API的文档
 
 ## 赞赏
 
