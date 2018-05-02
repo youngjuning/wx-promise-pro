@@ -68,6 +68,7 @@ wx.pro.request({
 ## 扩展的 API
 
 1. [showTopTips(OBJECT,this)](./detail/showTopTips.md)：顶部提示框
+2. [match(type,str)](./detail/match.md)：正则匹配方法
 
 ## TODO
 
