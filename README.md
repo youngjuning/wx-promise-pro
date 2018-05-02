@@ -28,6 +28,8 @@ npm i wx-promise-pro -D
 
 > 注意：导入 regeneratorRuntime 和原本 `wx.pro` 对象是不冲突的，你如果用不到 async 函数，那么可以不导入 regeneratorRuntime
 
+[点击](./detail/async.md) 查看关于 async 的 demo，或者 [点击](http://es6.ruanyifeng.com/#docs/async) 学习 async 的语法。
+
 ## 支持所有的微信小程序异步API
 
 从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 异步 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持：
@@ -65,25 +67,7 @@ wx.pro.request({
 
 ## 扩展的 API
 
-### wx.pro.showTopTips(OBJECT,this)
-
-#### OBJECT 参数说明
-
-| 参数     | 类型   | 必填 | 说明                         |
-| -------- | ------ | ---- | ---------------------------- |
-| content  | String | 是   | 提示的内容                   |
-| duration | Number | 否   | 提示持续的时间（默认3000ms） |
-
-#### Bug & Tips
-
-1. tip：第二个参数 this 是必填的，意思是传递当前页面的 this 给组件
-2. 这个方法是需要视图层配合的，如果你使用的是 `weui-wxss`，那么在页面中引入下面的代码即可：
-
-```html
-<view class="weui-toptips weui-toptips_warn" wx:if="{{topTips.show}}">{{topTips.content}}</view>
-```
-
-3. 你如果没有使用 `weui-wxss` 也没关系，自己定义样式，只要数据绑定正确即可。
+1. [showTopTips(OBJECT,this)](./detail/showTopTips.md)：顶部提示框
 
 ## TODO
 
