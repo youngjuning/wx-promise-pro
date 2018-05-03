@@ -72,7 +72,6 @@ wx.pro.request({
 3. initChart(option,echarts)：初始化 Echarts 的方法
 4. saveImageToPhotosAlbum(tempFilePath)：带有授权解决方案的保存图片到系统相册方法
 5. canvasToTempFilePath(canvasContext)：把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
-6. fillText(canvasContext,text,size,x,y,maxWidth)：canvas绘制自动换行的字符串的方法
 
 ## TODO
 
