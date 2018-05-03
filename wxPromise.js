@@ -79,7 +79,7 @@ const wxPromise = () => {
       return false
     }
   },
-  
+
   // 顶部提示框
   wx.pro.showTopTips = (option,that) => {
     return new Promise((resolve, reject) =>{
@@ -203,42 +203,6 @@ const wxPromise = () => {
         })
       })
     })
-  },
-
-  /**
-   * 绘制自动换行的字符串
-   * @param  {[object]} canvasContext  [canvas 绘图上下文]
-   * @param  {[string]} text           [在画布上输出的文本]
-   * @param  {[number]} x              [绘制文本的左上角x坐标位置]
-   * @param  {[number]} y              [绘制文本的左上角y坐标位置]
-   * @param  {[number]} maxWidth       [需要绘制的最大宽度]
-   */
-  wx.pro.fillText =(canvasContext,text,size,x,y,maxWidth) => {
-    var chr = text.split('')
-    var temp = ''
-    var row = []
-    for(var i = 0; i < chr.length; i++){
-      if(canvasContext.measureText(temp).width >= maxWidth){
-        row.push(temp)
-        temp = ''
-      }
-      temp += chr[i]
-    }
-    row.push(temp)
-    let iv = 0
-    let index = 0
-    if(row.length <= 2){iv = 4}else if(row.length <= 4){iv = 3}else if(row.length == 5){iv = 2}else if (row.length == 6) {iv = 1}
-    for(var j = 0; j < row.length; j++){
-      if (/\n/.test(row[j])) {
-        let rowText = row[j].split('\n')
-        rowText.forEach(item => {
-          index ++
-          canvasContext.fillText(item,x,y+(j+index+iv)*(size+4))
-        })
-      } else {
-        canvasContext.fillText(row[j],x,y+(j+index+iv)*(size+4))
-      }
-    }
   }
 }
 
