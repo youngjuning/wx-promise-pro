@@ -82,6 +82,8 @@ wx.pro.request({
 * [x] 排除所有的同步 API，让用户可以彻底抛弃 wx 对象
 * [x] 支持 ES2017 的 [async 函数](http://t.cn/RyUUVvA)
 * [x] 支持 ES2018 的 [finally](http://t.cn/RuJyewc)
+* [ ] 集成 `wx-queue-request` 控制微信小程序 `wx.request` 并发请求数量
+* [ ] 集成 `WxValidate.js` 来提供 类 jquery validate 的表单验证 或 借鉴 element-ui 的表单验证功能
 * [ ] 编写所有扩展API的文档
 
 ## 赞赏
