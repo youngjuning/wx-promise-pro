@@ -153,6 +153,17 @@ const wxPromise = () => {
       })
     })
   },
+  /**
+   * 更新 echarts
+   * echats 没有提供 update 的方法，因此我们利用 clear() 和 setOption() api 组合实现了这个功能
+   */
+  wx.pro.updateChart = (chart,option) => {
+    // 在chart.setOption之前用chart.clear来清除之前的图表，否则会出现一个非常奇怪的图表
+    chart.clear()
+    // option 是在网络请求之后异步动态获取的
+    chart.setOption(option)
+    // 因为不是 dispose，所以不需要重新绑定到this上，也不需要再次返回实例
+  }
 
   // 保存图片到系统相册。需要用户授权 scope.writePhotosAlbum
   wx.pro.saveImageToPhotosAlbum = (tempFilePath) => {
