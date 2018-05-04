@@ -74,7 +74,7 @@ wx.pro.request({
 1. [showTopTips(OBJECT,this)](./detail/showTopTips.md)：顶部提示框
 2. [match(type,str)](./detail/match.md)：正则匹配方法
 3. initChart(option,echarts)：初始化 Echarts 的方法
-4. wx.pro.lazyInitChart(option,echarts,componentId,that)：echarts 懒加载模式初始化
+4. [lazyInitChart(option,echarts,componentId,that)](./detail/lazyInitChart.md)：echarts 懒加载模式初始化
 5. saveImageToPhotosAlbum(tempFilePath)：带有授权解决方案的保存图片到系统相册方法
 6. canvasToTempFilePath(canvasContext)：把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
 
