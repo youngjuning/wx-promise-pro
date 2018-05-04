@@ -126,12 +126,44 @@ const wxPromise = () => {
       const chart = echarts.init(canvas, null, {
         width: width,
         height: height
-      });
+      })
       canvas.setChart(chart)
       chart.setOption(option)
       return chart
     }
   },
+
+  // echarts 延迟加载模式初始化
+  wx.pro.lazyInitChart = (option,echarts,componentId,that) => {
+    return new Promise((resolve,reject,canvas,width,height) => {
+      that.selectComponent(componentId).init((canvas, width, height) => {
+        // 获取组件的 canvas、width、height 后的回调函数
+        // 在这里初始化图表
+        const chart = echarts.init(canvas, null , {
+          width: width,
+          height: height
+        })
+        chart.setOption(option)
+
+        // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+        that.chart = chart
+
+        // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+        resolve(chart)
+      })
+    })
+  },
+  /**
+   * 更新 echarts
+   * echats 没有提供 update 的方法，因此我们利用 clear() 和 setOption() api 组合实现了这个功能
+   */
+  wx.pro.updateChart = (chart,option) => {
+    // 在chart.setOption之前用chart.clear来清除之前的图表，否则会出现一个非常奇怪的图表
+    chart.clear()
+    // option 是在网络请求之后异步动态获取的
+    chart.setOption(option)
+    // 因为不是 dispose，所以不需要重新绑定到this上，也不需要再次返回实例
+  }
 
   // 保存图片到系统相册。需要用户授权 scope.writePhotosAlbum
   wx.pro.saveImageToPhotosAlbum = (tempFilePath) => {
