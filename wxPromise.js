@@ -133,7 +133,7 @@ const wxPromise = () => {
     }
   },
 
-  // echarts 懒加载模式初始化
+  // echarts 延迟加载模式初始化
   wx.pro.lazyInitChart = (option,echarts,componentId,that) => {
     return new Promise((resolve,reject,canvas,width,height) => {
       that.selectComponent(componentId).init((canvas, width, height) => {
