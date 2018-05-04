@@ -126,11 +126,32 @@ const wxPromise = () => {
       const chart = echarts.init(canvas, null, {
         width: width,
         height: height
-      });
+      })
       canvas.setChart(chart)
       chart.setOption(option)
       return chart
     }
+  },
+
+  // echarts 懒加载模式初始化
+  wx.pro.lazyInitChart = (option,echarts,componentId,that) => {
+    return new Promise((resolve,reject,canvas,width,height) => {
+      that.selectComponent(componentId).init((canvas, width, height) => {
+        // 获取组件的 canvas、width、height 后的回调函数
+        // 在这里初始化图表
+        const chart = echarts.init(canvas, null , {
+          width: width,
+          height: height
+        })
+        chart.setOption(option)
+
+        // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+        that.chart = chart
+
+        // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+        resolve(chart)
+      })
+    })
   },
 
   // 保存图片到系统相册。需要用户授权 scope.writePhotosAlbum
