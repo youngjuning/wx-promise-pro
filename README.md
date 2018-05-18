@@ -86,7 +86,7 @@ wx.pro.request({
 * [x] 支持 ES2018 的 [finally](http://t.cn/RuJyewc)
 * [ ] 集成 donghaohao/vuefy [![GitHub stars](https://img.shields.io/github/stars/donghaohao/vuefy.svg?style=social&label=Stars)](https://github.com/donghaohao/vuefy) 以支持 watch 和 computed
 * [ ] 集成 `wx-queue-request` 控制微信小程序 `wx.request` 并发请求数量
-* [ ] 集成 `WxValidate.js` 来提供 类 jquery validate 的表单验证 或 借鉴 element-ui 的表单验证功能
+* [ ] 集成 `WxValidate.js` 来提供 类 jquery validate 的表单验证 或 借鉴 element-ui 的表单验证功能 https://github.com/mengdu/validator.js
 * [ ] 编写所有扩展API的文档
 
 ## 赞赏
