@@ -28,7 +28,7 @@ npm i wx-promise-pro -D
 
 > 由于 wxPromise 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
 
-全局引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
+页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
 
 > 注意：导入 regeneratorRuntime 和原本 `wx.pro` 对象是不冲突的，你如果用不到 async 函数，那么可以不导入 regeneratorRuntime
 
