@@ -36,16 +36,7 @@ npm i wx-promise-pro -D
 
 ## 支持所有的微信小程序异步API
 
-从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 异步 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持：
-
-```js
-// 将 promise 方法 挂载到 wx.pro 对象上
-for (var variable in wx) {
-  if (wx.hasOwnProperty(variable)) {
-    wx.pro[variable] = promisify(wx[variable])
-  }
-}
-```
+从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 异步 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持。
 
 ### 示例代码
 
