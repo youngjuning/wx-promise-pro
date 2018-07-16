@@ -19,7 +19,7 @@
 如果你在小程序项目中使用的 NPM 来作为包管理器，或者你使用 mpvue 开发小程序，那么可以直接使用 npm 来安装 `wx-promise-pro`
 
 ```bash
-npm i wx-promise-pro -D
+npm i wx-promise-pro
 ```
 
 然后使用 nodejs（`require('wx-promise-pro')`）或者 ES6 Moudle（`import 'wx-promise-pro'`） 的方式引入。
