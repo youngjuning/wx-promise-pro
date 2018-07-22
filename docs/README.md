@@ -84,12 +84,6 @@ wx.pro.request({
 * [ ] 集成 `WxValidate.js` 来提供 类 jquery validate 的表单验证 或 借鉴 element-ui 的表单验证功能 https://github.com/mengdu/validator.js
 * [ ] 编写所有扩展API的文档
 
-## 赞赏
-
-赞赏是对我最大的支持！！
-
-<img src="http://t.cn/RuKLpOz">
-
 ## License
 
 MIT License
