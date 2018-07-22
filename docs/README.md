@@ -19,7 +19,7 @@
 如果你在小程序项目中使用的 NPM 来作为包管理器，或者你使用 mpvue 开发小程序，那么可以直接使用 npm 来安装 `wx-promise-pro`
 
 ```bash
-npm i wx-promise-pro -D
+npm i wx-promise-pro
 ```
 
 然后使用 nodejs（`require('wx-promise-pro')`）或者 ES6 Moudle（`import 'wx-promise-pro'`） 的方式引入。
@@ -28,7 +28,7 @@ npm i wx-promise-pro -D
 
 > 由于 wxPromise 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
 
-全局引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
+页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
 
 > 注意：导入 regeneratorRuntime 和原本 `wx.pro` 对象是不冲突的，你如果用不到 async 函数，那么可以不导入 regeneratorRuntime
 
@@ -36,16 +36,7 @@ npm i wx-promise-pro -D
 
 ## 支持所有的微信小程序异步API
 
-从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 异步 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持：
-
-```js
-// 将 promise 方法 挂载到 wx.pro 对象上
-for (var variable in wx) {
-  if (wx.hasOwnProperty(variable)) {
-    wx.pro[variable] = promisify(wx[variable])
-  }
-}
-```
+从 2.0.0 开始，我们引入了下面这段代码，来一劳永逸地支持所有的 异步 api。开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持。
 
 ### 示例代码
 
