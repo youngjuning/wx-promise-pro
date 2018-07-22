@@ -5,6 +5,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: 'GitHub', link: 'https://github.com/youngjuning/wxPromise' },
-    ]
+    ], // 导航栏
+    sidebar: auto // 自动生成侧栏
   }
 }
