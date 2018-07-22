@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 ## wx.pro.showTopTips(OBJECT,this)
 
 ### OBJECT 参数说明

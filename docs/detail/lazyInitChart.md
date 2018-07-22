@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 ## wx.pro.lazyInitChart 使用说明
 
 ### 文件架构

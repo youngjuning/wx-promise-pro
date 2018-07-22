@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 ## match(type,str)
 
 ### 参数说明
