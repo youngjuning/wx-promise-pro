@@ -2,7 +2,7 @@
   "name": "wx-promise-pro",
   "version": "2.4.2",
   "description": "强大的、优雅的小程序 Promise 库",
-  "main": "wxPromise.js",
+  "main": "wxPromise.min.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
