@@ -87,18 +87,15 @@ const wxPromise = () => {
       if (!option.content) {reject('option.content属性是必须的')}
       // 如果topTips属性不存在就初始化为一个对象
       let topTips = that.data.topTips || {}
-
       // 如果已经有一个定时器在了，就清理掉先
       if (topTips.timeout) {
         clearTimeout(topTips.timeout)
         topTips.timeout = 0
       }
-
       // 如果没有设置duration则默认3000ms
       if (option.duration === undefined) {
         option.duration = 3000
       }
-
       // 设置超时定时器，定时关闭topTips
       var timeout = setTimeout(() => {
         that.setData({
@@ -108,7 +105,6 @@ const wxPromise = () => {
           resolve()
         })
       }, option.duration)
-
       // 展示出topTips
       that.setData({
         topTips: {
