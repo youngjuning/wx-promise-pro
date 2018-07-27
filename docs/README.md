@@ -76,13 +76,13 @@ wx.pro.request({
 6. saveImageToPhotosAlbum(tempFilePath)：带有授权解决方案的保存图片到系统相册方法
 7. canvasToTempFilePath(canvasContext)：把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
 
-## TODO
+## 推荐一波
 
-> 欢迎 PR
+> 下面是推荐的库，本来是要集成到wxPromise的。但是考虑到主题相关性和包体积，我并不打算这么做了！！！
 
-- 集成 donghaohao/vuefy [![GitHub stars](https://img.shields.io/github/stars/donghaohao/vuefy.svg?style=social&label=Stars)](https://github.com/donghaohao/vuefy) 以支持 watch 和 computed
-- 集成 `wx-queue-request` 控制微信小程序 `wx.request` 并发请求数量
-- 集成 `WxValidate.js` 来提供 类 jquery validate 的表单验证 或 借鉴 element-ui 的表单验证功能 https://github.com/mengdu/validator.js
+- donghaohao/vuefy [![GitHub stars](https://img.shields.io/github/stars/donghaohao/vuefy.svg?style=social&label=Stars)](https://github.com/donghaohao/vuefy)：让小程序支持 watch 和 computed
+- zhengjunxin/wx-queue-request [![GitHub stars](https://img.shields.io/github/stars/zhengjunxin/wx-queue-request.svg?style=social&label=Stars)](https://github.com/zhengjunxin/wx-queue-request)：控制微信小程序 wx.request 并发请求数量
+- mengdu/validator.js [![GitHub stars](https://img.shields.io/github/stars/mengdu/validator.js.svg?style=social&label=Stars)](https://github.com/mengdu/validator.js)：一个简单的 JavaScript data 验证库
 
 ## License
 
