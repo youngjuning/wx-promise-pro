@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # wxPromise
 
 强大的、优雅的 小程序 Promise 库，wxPromise 不仅仅把微信小程序所有异步 API promise 化，还把许多优雅的解决方案封装成方法挂载到 `wx.pro` 对象下。所以在 wxPromise 中，pro 既有 promise 的含义又有扩展的意思。
