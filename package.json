@@ -1,6 +1,6 @@
 {
   "name": "wx-promise-pro",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "强大的、优雅的小程序 Promise 库",
   "main": "wxPromise.min.js",
   "scripts": {
