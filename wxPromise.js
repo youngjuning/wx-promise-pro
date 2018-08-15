@@ -31,7 +31,6 @@ const promisify = (api) => {
   }
 }
 
-wx.pro = {}
 // 以下是没有 success、fail、complete 属性的api
 // 1、...Sync【√】
 // 2、on...【√】
@@ -41,8 +40,8 @@ wx.pro = {}
 // 6、stopRecord、stopVoice、stopBackgroundAudio、stopPullDownRefresh【√】
 // 7、hideKeyboard、hideToast、hideLoading、showNavigationBarLoading、hideNavigationBarLoading【√】
 // 8、canIUse、navigateBack、closeSocket、pageScrollTo、drawCanvas【√】
+wx.pro = {}
 const wxPromise = () => {
-  // 将 promise 方法 挂载到 wx.pro 对象上
   for (let key in wx) {
     if (wx.hasOwnProperty(key)) {
       if (/^on|^create|Sync$|Manager$|^pause/.test(key) && key !== 'createBLEConnection' || key === 'stopRecord' || key === 'stopVoice' || key === 'stopBackgroundAudio' || key === 'stopPullDownRefresh' || key === 'hideKeyboard' || key === 'hideToast' || key === 'hideLoading' || key === 'showNavigationBarLoading' || key === 'hideNavigationBarLoading' || key === 'canIUse' || key === 'navigateBack' || key === 'closeSocket' || key === 'closeSocket' || key === 'pageScrollTo' || key === 'drawCanvas') {
@@ -149,6 +148,7 @@ const wxPromise = () => {
       })
     })
   },
+
   /**
    * 更新 echarts
    * echats 没有提供 update 的方法，因此我们利用 clear() 和 setOption() api 组合实现了这个功能
@@ -231,18 +231,6 @@ const wxPromise = () => {
         })
       })
     })
-  }
-  // 画圆角矩形
-  wx.pro.circleImg = (ctx, img, x, y, r) => {
-    ctx.save()
-    var d =2 * r
-    var cx = x + r
-    var cy = y + r
-
-    ctx.arc(cx, cy, r, 0, 2 * Math.PI)
-    ctx.clip()
-    ctx.drawImage(img, x, y, d, d)
-    ctx.restore()
   }
 }
 
