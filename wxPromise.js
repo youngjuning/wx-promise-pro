@@ -12,6 +12,14 @@
 * https://opensource.org/licenses/MIT
 */
 
+// 判断是否是再mpvue里执行
+const isMpvue = (that) => {
+  if (that && that.$mp) {
+    return true
+  }
+  return false
+}
+
 // 把普通函数变成promise函数
 const promisify = (api) => {
   return (options, ...params) => {
@@ -84,6 +92,9 @@ const wxPromise = () => {
     return new Promise((resolve, reject) =>{
       if (!option) {reject('缺少配置项！')}
       if (!option.content) {reject('option.content属性是必须的')}
+      
+      const inMpvue = isMpvue(that)
+      
       // 如果topTips属性不存在就初始化为一个对象
       let topTips = that.data.topTips || {}
       // 如果已经有一个定时器在了，就清理掉先
@@ -97,21 +108,38 @@ const wxPromise = () => {
       }
       // 设置超时定时器，定时关闭topTips
       var timeout = setTimeout(() => {
-        that.setData({
-          'topTips.show': false,
-          'topTips.timeout': 0
-        },() => {
-          resolve()
-        })
+        // mpvue中直接调用that.topTips 来修改data
+        if (inMpvue) {
+          that.topTips = {
+            content: that.topTips.content,
+            show: false,
+            timeout: 0
+           }
+        } else { 
+          that.setData({
+            'topTips.show': false,
+            'topTips.timeout': 0
+          },() => {
+            resolve()
+          })
+        }
       }, option.duration)
       // 展示出topTips
-      that.setData({
-        topTips: {
+      if (inMpvue) {
+        that.topTips = {
           show: true,
           content: option.content, // content属性必选
           timeout // 把超时定时器赋值给topTip对象
         }
-      })
+      } else {
+        that.setData({
+          topTips: {
+            show: true,
+            content: option.content, // content属性必选
+            timeout // 把超时定时器赋值给topTip对象
+          }
+        })
+      }
     })
   }
 
