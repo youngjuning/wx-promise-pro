@@ -5,6 +5,8 @@
 * NPM INSTALL
 * https://www.npmjs.com/package/wx-promise-pro
 *
+* regenerator-runtime
+* http://t.cn/RuKTciN
 * Copyright 2018, youngjuning
 * http://www.wakeuptocode.me
 *
