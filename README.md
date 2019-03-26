@@ -62,10 +62,6 @@ wx.pro.request({
 })
 ```
 
-## 扩展的 API
-
-详细文档：https://github.com/youngjuning/wxPromise
-
 ## 推荐一波
 
 > 下面是推荐的库，本来是要集成到wxPromise的。但是考虑到主题相关性和包体积，我并不打算这么做了！！！
