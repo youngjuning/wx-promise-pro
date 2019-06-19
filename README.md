@@ -1,6 +1,6 @@
 # wx-promise-pro
 
-强大的、优雅的 小程序 Promise 库，wxPromise 不仅仅把微信小程序所有异步 API promise 化，还把许多优雅的解决方案封装成方法挂载到 `wx.pro` 对象下。所以在 wxPromise 中，pro 既有 promise 的含义又有扩展的意思。
+强大的、优雅的 小程序 Promise 库，wx-promise-pro 不仅仅把微信小程序所有异步 API promise 化，还把许多优雅的解决方案封装成方法挂载到 `wx.pro` 对象下。所以在 wx-promise-pro 中，pro 既有 promise 的含义又有扩展的意思。
 
 [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dm/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro)
 
@@ -28,7 +28,7 @@ npm i wx-promise-pro
 
 ### 支持 async、await
 
-> 由于 wxPromise 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
+> 由于 wx-promise-pro 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
 
 页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
 
@@ -64,7 +64,7 @@ wx.pro.request({
 
 ## 推荐一波
 
-> 下面是推荐的库，本来是要集成到wxPromise的。但是考虑到主题相关性和包体积，我并不打算这么做了！！！
+> 下面是推荐的库，本来是要集成到wx-promise-pro的。但是考虑到主题相关性和包体积，我并不打算这么做了！！！
 
 - donghaohao/vuefy [![GitHub stars](https://img.shields.io/github/stars/donghaohao/vuefy.svg?style=social&label=Stars)](https://github.com/donghaohao/vuefy)：让小程序支持 watch 和 computed
 - zhengjunxin/wx-queue-request [![GitHub stars](https://img.shields.io/github/stars/zhengjunxin/wx-queue-request.svg?style=social&label=Stars)](https://github.com/zhengjunxin/wx-queue-request)：控制微信小程序 wx.request 并发请求数量
