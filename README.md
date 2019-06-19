@@ -44,7 +44,7 @@ npm i wx-promise-pro
 
 ```js
 // 演示 wxPromise 的能力
-wx.showLoading({
+wx.pro.showLoading({
   title: '加载中',
   mask: true
 })
