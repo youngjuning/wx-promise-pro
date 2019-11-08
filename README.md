@@ -61,7 +61,3 @@ wx.pro.request({
   wx.hideLoading()
 })
 ```
-
-## Contributors
-
-<a href="graphs/contributors"><img src="https://opencollective.com/wx-promise-pro/contributors.svg?width=890" /></a>
