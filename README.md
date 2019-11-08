@@ -62,10 +62,6 @@ wx.pro.request({
 })
 ```
 
-## 推荐一波
+## Contributors
 
-> 下面是推荐的库，本来是要集成到wx-promise-pro的。但是考虑到主题相关性和包体积，我并不打算这么做了！！！
-
-- donghaohao/vuefy [![GitHub stars](https://img.shields.io/github/stars/donghaohao/vuefy.svg?style=social&label=Stars)](https://github.com/donghaohao/vuefy)：让小程序支持 watch 和 computed
-- zhengjunxin/wx-queue-request [![GitHub stars](https://img.shields.io/github/stars/zhengjunxin/wx-queue-request.svg?style=social&label=Stars)](https://github.com/zhengjunxin/wx-queue-request)：控制微信小程序 wx.request 并发请求数量
-- mengdu/validator.js [![GitHub stars](https://img.shields.io/github/stars/mengdu/validator.js.svg?style=social&label=Stars)](https://github.com/mengdu/validator.js)：一个简单的 JavaScript data 验证库
+<a href="graphs/contributors"><img src="https://opencollective.com/wx-promise-pro/contributors.svg?width=890" /></a>
