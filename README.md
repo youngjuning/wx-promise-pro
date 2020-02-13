@@ -14,8 +14,6 @@
 
 将 `wxPromise.min.js` copy 到 utils 目录中，然后在 `app.js` 中引入： `import './utils/wxPromise.min.js'`。
 
-如果想要支持 async 和 await，请仔细阅读 **支持 async和await** 这一节。
-
 ### 使用NPM
 
 如果你在小程序项目中使用的 NPM 来作为包管理器，或者你使用 mpvue 开发小程序，那么可以直接使用 npm 来安装 `wx-promise-pro`
@@ -31,10 +29,6 @@ npm i wx-promise-pro
 > 由于 wx-promise-pro 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
 
 页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
-
-> 注意：导入 regeneratorRuntime 和原本 `wx.pro` 对象是不冲突的，你如果用不到 async 函数，那么可以不导入 regeneratorRuntime
-
-[点击](./detail/async.md) 查看关于 async 的 demo，或者 [点击](http://es6.ruanyifeng.com/#docs/async) 学习 async 的语法。
 
 ## 支持所有的微信小程序异步API
 
