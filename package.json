@@ -4,9 +4,7 @@
   "description": "强大的、优雅的小程序 Promise 库",
   "main": "wxPromise.min.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postversion": "git push --tags && git push && npm publish"
   },
   "repository": {
     "type": "git",
@@ -28,8 +26,5 @@
   "bugs": {
     "url": "https://github.com/youngjuning/wxPromise/issues"
   },
-  "homepage": "https://github.com/youngjuning/wxPromise#readme",
-  "devDependencies": {
-    "vuepress": "^0.12.0"
-  }
+  "homepage": "https://github.com/youngjuning/wxPromise#readme"
 }
