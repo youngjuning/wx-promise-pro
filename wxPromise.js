@@ -272,24 +272,43 @@ wxPromise();
   var runtime = global.regeneratorRuntime;
   if (runtime) {
     if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
       module.exports = runtime;
     }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
     return;
   }
 
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
   runtime = global.regeneratorRuntime = inModule ? module.exports : {};
 
   function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
     var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
     var generator = Object.create(protoGenerator.prototype);
     var context = new Context(tryLocsList || []);
 
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
     generator._invoke = makeInvokeMethod(innerFn, self, context);
 
     return generator;
   }
   runtime.wrap = wrap;
 
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
   function tryCatch(fn, obj, arg) {
     try {
       return { type: "normal", arg: fn.call(obj, arg) };
@@ -303,12 +322,20 @@ wxPromise();
   var GenStateExecuting = "executing";
   var GenStateCompleted = "completed";
 
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
   var ContinueSentinel = {};
 
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
   function Generator() {}
   function GeneratorFunction() {}
   function GeneratorFunctionPrototype() {}
 
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
   var IteratorPrototype = {};
   IteratorPrototype[iteratorSymbol] = function () {
     return this;
@@ -319,6 +346,8 @@ wxPromise();
   if (NativeIteratorPrototype &&
       NativeIteratorPrototype !== Op &&
       hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
     IteratorPrototype = NativeIteratorPrototype;
   }
 
@@ -329,6 +358,8 @@ wxPromise();
   GeneratorFunctionPrototype[toStringTagSymbol] =
     GeneratorFunction.displayName = "GeneratorFunction";
 
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
   function defineIteratorMethods(prototype) {
     ["next", "throw", "return"].forEach(function(method) {
       prototype[method] = function(arg) {
@@ -341,6 +372,8 @@ wxPromise();
     var ctor = typeof genFun === "function" && genFun.constructor;
     return ctor
       ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
         (ctor.displayName || ctor.name) === "GeneratorFunction"
       : false;
   };
@@ -358,6 +391,10 @@ wxPromise();
     return genFun;
   };
 
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
   runtime.awrap = function(arg) {
     return { __await: arg };
   };
@@ -381,9 +418,16 @@ wxPromise();
         }
 
         return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
           result.value = unwrapped;
           resolve(result);
-        }, reject);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
       }
     }
 
@@ -397,12 +441,28 @@ wxPromise();
       }
 
       return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
         previousPromise ? previousPromise.then(
           callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
           callInvokeWithMethodAndArg
         ) : callInvokeWithMethodAndArg();
     }
 
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
     this._invoke = enqueue;
   }
 
@@ -412,6 +472,9 @@ wxPromise();
   };
   runtime.AsyncIterator = AsyncIterator;
 
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
   runtime.async = function(innerFn, outerFn, self, tryLocsList) {
     var iter = new AsyncIterator(
       wrap(innerFn, outerFn, self, tryLocsList)
@@ -456,6 +519,8 @@ wxPromise();
         }
 
         if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
           context.sent = context._sent = context.arg;
 
         } else if (context.method === "throw") {
@@ -474,6 +539,8 @@ wxPromise();
 
         var record = tryCatch(innerFn, self, context);
         if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
           state = context.done
             ? GenStateCompleted
             : GenStateSuspendedYield;
@@ -489,6 +556,8 @@ wxPromise();
 
         } else if (record.type === "throw") {
           state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
           context.method = "throw";
           context.arg = record.arg;
         }
@@ -496,18 +565,28 @@ wxPromise();
     };
   }
 
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
   function maybeInvokeDelegate(delegate, context) {
     var method = delegate.iterator[context.method];
     if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
       context.delegate = null;
 
       if (context.method === "throw") {
         if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
           context.method = "return";
           context.arg = undefined;
           maybeInvokeDelegate(delegate, context);
 
           if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
             return ContinueSentinel;
           }
         }
@@ -539,27 +618,46 @@ wxPromise();
     }
 
     if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
       context[delegate.resultName] = info.value;
 
+      // Resume execution at the desired location (see delegateYield).
       context.next = delegate.nextLoc;
 
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
       if (context.method !== "return") {
         context.method = "next";
         context.arg = undefined;
       }
 
     } else {
+      // Re-yield the result returned by the delegate method.
       return info;
     }
 
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
     context.delegate = null;
     return ContinueSentinel;
   }
 
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
   defineIteratorMethods(Gp);
 
   Gp[toStringTagSymbol] = "Generator";
 
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
   Gp[iteratorSymbol] = function() {
     return this;
   };
@@ -591,6 +689,9 @@ wxPromise();
   }
 
   function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
     this.tryEntries = [{ tryLoc: "root" }];
     tryLocsList.forEach(pushTryEntry, this);
     this.reset(true);
@@ -603,6 +704,8 @@ wxPromise();
     }
     keys.reverse();
 
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
     return function next() {
       while (keys.length) {
         var key = keys.pop();
@@ -613,6 +716,9 @@ wxPromise();
         }
       }
 
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
       next.done = true;
       return next;
     };
@@ -775,6 +881,8 @@ wxPromise();
            type === "continue") &&
           finallyEntry.tryLoc <= arg &&
           arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
         finallyEntry = null;
       }
 
@@ -856,5 +964,10 @@ wxPromise();
     }
   };
 })(
-  (function() { return this })() || Function("return this")()
+  // In sloppy mode, unbound `this` refers to the global object, fallback to
+  // Function constructor if we're in global strict mode. That is sadly a form
+  // of indirect eval which violates Content Security Policy.
+  (function() {
+    return this || (typeof self === "object" && self);
+  })() || Function("return this")()
 );
