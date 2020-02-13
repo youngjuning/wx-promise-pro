@@ -1,6 +1,6 @@
 # wx-promise-pro
 
-强大的、优雅的 小程序 Promise 库
+:sparkles:强大、优雅的小程序异步库:rocket: 小程序promise
 
 > wx-promise-pro 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
 
