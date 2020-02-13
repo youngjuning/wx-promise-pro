@@ -79,9 +79,9 @@ const wxPromise = () => {
     return new Promise((resolve, reject) =>{
       if (!option) {reject('缺少配置项！')}
       if (!option.content) {reject('option.content属性是必须的')}
-      
+
       const inMpvue = isMpvue(that)
-      
+
       // 如果topTips属性不存在就初始化为一个对象
       let topTips = that.data.topTips || {}
       // 如果已经有一个定时器在了，就清理掉先
@@ -101,8 +101,8 @@ const wxPromise = () => {
             content: that.topTips.content,
             show: false,
             timeout: 0
-           }
-        } else { 
+          }
+        } else {
           that.setData({
             'topTips.show': false,
             'topTips.timeout': 0
