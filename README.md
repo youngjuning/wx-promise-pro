@@ -63,7 +63,7 @@ wx.pro.request({
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/youngjuning/wx-promise-pro/graphs/contributors"><img src="https://opencollective.com/wx-promise-pro/contributors.svg?width=890&button=false" /></a>
 
-### Financial Contributors
+<!-- ### Financial Contributors
 
 Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/wx-promise-pro/contribute)]
 
@@ -84,4 +84,4 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/wx-promise-pro/organization/6/website"><img src="https://opencollective.com/wx-promise-pro/organization/6/avatar.svg"></a>
 <a href="https://opencollective.com/wx-promise-pro/organization/7/website"><img src="https://opencollective.com/wx-promise-pro/organization/7/avatar.svg"></a>
 <a href="https://opencollective.com/wx-promise-pro/organization/8/website"><img src="https://opencollective.com/wx-promise-pro/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/wx-promise-pro/organization/9/website"><img src="https://opencollective.com/wx-promise-pro/organization/9/avatar.svg"></a>
+<a href="https://opencollective.com/wx-promise-pro/organization/9/website"><img src="https://opencollective.com/wx-promise-pro/organization/9/avatar.svg"></a> -->
