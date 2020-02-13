@@ -6,12 +6,14 @@ const isMpvue = (that) => {
   return false
 }
 
-Promise.prototype.finally = function (callback) {
-  let P = this.constructor
-  return this.then(
-    value  => P.resolve(callback()).then(() => value),
-    reason => P.resolve(callback()).then(() => { throw reason })
-  )
+if(!Promise.prototype.finally) {
+  Promise.prototype.finally = function (callback) {
+    let P = this.constructor
+    return this.then(
+      value  => P.resolve(callback()).then(() => value),
+      reason => P.resolve(callback()).then(() => { throw reason })
+    )
+  }
 }
 
 // 把普通函数变成promise函数
