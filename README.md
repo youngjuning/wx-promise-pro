@@ -1,6 +1,8 @@
 # wx-promise-pro
 
-强大的、优雅的 小程序 Promise 库，wx-promise-pro 不仅仅把微信小程序所有异步 API promise 化，还把许多优雅的解决方案封装成方法挂载到 `wx.pro` 对象下。所以在 wx-promise-pro 中，pro 既有 promise 的含义又有扩展的意思。
+强大的、优雅的 小程序 Promise 库
+
+> wx-promise-pro 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
 
 [![Financial Contributors on Open Collective](https://opencollective.com/wx-promise-pro/all/badge.svg?label=financial+contributors)](https://opencollective.com/wx-promise-pro) [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dm/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro)
 
@@ -11,8 +13,6 @@
 ### 普通使用方法
 
 将 `wxPromise.min.js` copy 到 utils 目录中，然后在 `app.js` 中引入： `import './utils/wxPromise.min.js'`。
-
-本库分为两个部分，一部分是将微信小程序原有的API promise 化，一部分是我自己封装的常用方法。两部分的方法都是挂载在 `wx.pro` 对象下，使用的时候直接使用 `wx.pro` 对象调用即可。
 
 如果想要支持 async 和 await，请仔细阅读 **支持 async和await** 这一节。
 
