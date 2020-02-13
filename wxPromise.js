@@ -229,24 +229,6 @@ const wxPromise = () => {
       })
     })
   },
-
-  // 把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径
-  // TODO: 增加更多的参数配置
-  wx.pro.canvasToTempFilePath = (canvasContext) => {
-    return new Promise((resolve, reject) =>{
-      canvasContext.draw(true, () => {
-        wx.canvasToTempFilePath({
-          canvasId: 'card',
-          success: (res) => {
-            resolve(res)
-          },
-          fail: (err)=> {
-            reject(err)
-          }
-        })
-      })
-    })
-  }
 }
 
 wxPromise();
