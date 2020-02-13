@@ -1,25 +1,17 @@
-/*
-* wxPromise
-* https://github.com/youngjuning/wxPromise
-*
-* NPM INSTALL
-* https://www.npmjs.com/package/wx-promise-pro
-*
-* regenerator-runtime
-* http://t.cn/RuKTciN
-* Copyright 2018, youngjuning
-* http://www.wakeuptocode.me
-*
-* Licensed under the MIT license:
-* https://opensource.org/licenses/MIT
-*/
-
 // 判断是否是再mpvue里执行
 const isMpvue = (that) => {
   if (that && that.$mp) {
     return true
   }
   return false
+}
+
+Promise.prototype.finally = function (callback) {
+  let P = this.constructor
+  return this.then(
+    value  => P.resolve(callback()).then(() => value),
+    reason => P.resolve(callback()).then(() => { throw reason })
+  )
 }
 
 // 把普通函数变成promise函数
@@ -30,13 +22,6 @@ const promisify = (api) => {
         success: resolve,
         fail: reject
       }), ...params)
-      Promise.prototype.finally = function (callback) {
-        let P = this.constructor
-        return this.then(
-          value  => P.resolve(callback()).then(() => value),
-          reason => P.resolve(callback()).then(() => { throw reason })
-        )
-      }
     })
   }
 }
