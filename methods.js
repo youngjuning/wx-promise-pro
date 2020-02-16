@@ -1,15 +1,4 @@
-// polyfill for finally
-if(!Promise.prototype.finally) {
-  Promise.prototype.finally = function (callback) {
-    let P = this.constructor
-    return this.then(
-      value  => P.resolve(callback()).then(() => value),
-      reason => P.resolve(callback()).then(() => { throw reason })
-    )
-  }
-}
-
-const asyncMethods = [
+export const asyncMethods = [
   'canvasGetImageData',
   'canvasPutImageData',
   'canvasToTempFilePath',
@@ -158,28 +147,3 @@ const asyncMethods = [
   'switchTab',
   'navigateBack'
 ]
-
-// core method
-const promisify = (api) => {
-  return (args = {}) => {
-    return new Promise((resolve, reject) => {
-      api({
-        ...args,
-        success: resolve,
-        fail: reject
-      })
-    })
-  }
-}
-
-// IIFE，Immediately Invoke Function
-(function() {
-  wx.pro = {}
-  Object.keys(wx).forEach(key => {
-    if (asyncMethods.indexOf(key) >= 0) {
-      wx.pro[key] = promisify(wx[key])
-    } else {
-      wx.pro[key] = wx[key]
-    }
-  })
-})()
