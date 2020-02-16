@@ -1,9 +1,6 @@
 // 判断是否是再mpvue里执行
 const isMpvue = (that) => {
-  if (that && that.$mp) {
-    return true
-  }
-  return false
+  return that && that.$mp
 }
 
 if(!Promise.prototype.finally) {
