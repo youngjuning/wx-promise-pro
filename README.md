@@ -2,12 +2,14 @@
 
 :sparkles:强大、优雅的小程序异步库:rocket: 小程序promise
 
-- 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
-- 一处引用，处处使用
-
 [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dt/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![Financial Contributors on Open Collective](https://opencollective.com/wx-promise-pro/all/badge.svg?label=financial+contributors)](https://opencollective.com/wx-promise-pro)
 
 [![NPM](https://nodei.co/npm/wx-promise-pro.png?compact=true)](https://nodei.co/npm/wx-promise-pro/)
+
+## 优势
+
+- 方便集成：一处引用，处处使用
+- 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
 
 ## 使用
 
@@ -16,8 +18,6 @@
 将 `wxPromise.min.js` copy 到 utils 目录中，然后在 `app.js` 中引入： `import './utils/wxPromise.min.js'`。
 
 ### 使用NPM
-
-如果你在小程序项目中使用的 NPM 来作为包管理器，或者你使用 mpvue 开发小程序，那么可以直接使用 npm 来安装 `wx-promise-pro`
 
 ```bash
 npm i wx-promise-pro
