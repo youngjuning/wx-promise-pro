@@ -26,9 +26,7 @@ npm i wx-promise-pro
 
 ### 支持 async、await
 
-> 由于 wx-promise-pro 是直接内置了 regenerator-runtime，所以推荐使用压缩版，体积不到10k
-
-页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/wxPromise.min.js'`
+页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/regenerator-runtime.js'`
 
 ## 支持所有的微信小程序异步API
 
