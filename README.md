@@ -2,7 +2,8 @@
 
 :sparkles:强大、优雅的小程序异步库:rocket: 小程序promise
 
-> wx-promise-pro 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
+- 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
+- 一处引用，处处使用
 
 [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dt/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![Financial Contributors on Open Collective](https://opencollective.com/wx-promise-pro/all/badge.svg?label=financial+contributors)](https://opencollective.com/wx-promise-pro)
 
