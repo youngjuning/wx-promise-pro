@@ -12,23 +12,17 @@
 - 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
 - 支持 `finally` 特性
 
-## 使用
-
-### 普通使用方法
+## 普通使用方法
 
 将 `wxPromise.min.js` copy 到 utils 目录中，然后在 `app.js` 中引入： `import './utils/wxPromise.min.js'`。
 
-### 使用NPM
+## 使用NPM
 
 ```bash
 npm i wx-promise-pro
 ```
 
 然后使用 nodejs（`require('wx-promise-pro')`）或者 ES6 Moudle（`import 'wx-promise-pro'`） 的方式引入。
-
-### 支持 async、await
-
-在需要的页面引入 regeneratorRuntime: `import regeneratorRuntime from './utils/regenerator-runtime.js'`
 
 ## 支持所有的微信小程序异步API
 
@@ -55,6 +49,10 @@ wx.pro.request({
   wx.hideLoading()
 })
 ```
+
+## 支持 async、await
+
+在需要的页面引入 regeneratorRuntime: `import regeneratorRuntime from './utils/regenerator-runtime.js'`
 
 ## Contributors
 
