@@ -50,10 +50,6 @@ wx.pro.request({
 })
 ```
 
-## 支持 async、await
-
-在需要的页面引入 regeneratorRuntime: `import regeneratorRuntime from './utils/regenerator-runtime.js'`
-
 ## Contributors
 
 ### Code Contributors
