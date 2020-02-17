@@ -28,7 +28,7 @@ npm i wx-promise-pro
 
 ### 支持 async、await
 
-在需要的页面引入 regeneratorRuntime: `import regeneratorRuntime from '/utils/regenerator-runtime.js'`
+在需要的页面引入 regeneratorRuntime: `import regeneratorRuntime from './utils/regenerator-runtime.js'`
 
 ## 支持所有的微信小程序异步API
 
