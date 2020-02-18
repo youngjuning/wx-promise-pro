@@ -5655,7 +5655,7 @@ innerAudioContext.onError((res) => {
         /** [CameraContext.startRecord(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/camera/CameraContext.startRecord.html)
          *
          * 开始录像 */
-        startRecord(option: CameraContextStartRecordOption): void
+        startRecord(option: CameraContextStartRecordOption): Promise<GeneralCallbackResult>
         /** [CameraContext.stopRecord(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/camera/CameraContext.stopRecord.html)
          *
          * 结束录像 */
@@ -7543,11 +7543,11 @@ this.editorCtx.insertImage({
         /** [FileSystemManager.getFileInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.getFileInfo.html)
          *
          * 获取该小程序下的 本地临时文件 或 本地缓存文件 信息 */
-        getFileInfo(option: FileSystemManagerGetFileInfoOption): void
+        getFileInfo(option: FileSystemManagerGetFileInfoOption): Promise<FileSystemManagerGetFileInfoSuccessCallbackResult>
         /** [FileSystemManager.getSavedFileList(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.getSavedFileList.html)
          *
          * 获取该小程序下已保存的本地缓存文件列表 */
-        getSavedFileList(option?: FileSystemManagerGetSavedFileListOption): void
+        getSavedFileList(option?: FileSystemManagerGetSavedFileListOption): Promise<FileSystemManagerGetSavedFileListSuccessCallbackResult>
         /** [FileSystemManager.mkdir(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.mkdir.html)
          *
          * 创建目录 */
@@ -7606,7 +7606,7 @@ this.editorCtx.insertImage({
         /** [FileSystemManager.saveFile(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.saveFile.html)
          *
          * 保存临时文件到本地。此接口会移动临时文件，因此调用成功后，tempFilePath 将不可用。 */
-        saveFile(option: FileSystemManagerSaveFileOption): void
+        saveFile(option: FileSystemManagerSaveFileOption): Promise<FileSystemManagerSaveFileSuccessCallbackResult>
         /** [FileSystemManager.stat(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.stat.html)
          *
          * 获取文件 Stats 对象 */
@@ -9417,7 +9417,7 @@ wx.downloadFile({
   }
 })
 ``` */
-        downloadFile(option: DownloadFileOption): DownloadTask
+        downloadFile(option: DownloadFileOption): Promise<DownloadFileSuccessCallbackResult>
         /** [[FileSystemManager](https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.html) wx.getFileSystemManager()](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.getFileSystemManager.html)
          *
          * 获取全局唯一的文件管理器
@@ -9559,7 +9559,7 @@ wx.request({
   }
 })
 ``` */
-        request(option: RequestOption): RequestTask
+        request(option: RequestOption): Promise<RequestSuccessCallbackResult>
         /** [[RewardedVideoAd](https://developers.weixin.qq.com/miniprogram/dev/api/ad/RewardedVideoAd.html) wx.createRewardedVideoAd(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ad/wx.createRewardedVideoAd.html)
          *
          * 创建激励视频广告组件。请通过 [wx.getSystemInfoSync()](https://developers.weixin.qq.com/miniprogram/dev/api/base/system/system-info/wx.getSystemInfoSync.html) 返回对象的 SDKVersion 判断基础库版本号后再使用该 API（小游戏端要求 >= 2.0.4， 小程序端要求 >= 2.6.0）。调用该方法创建的激励视频广告是一个单例（小游戏端是全局单例，小程序端是页面内单例，在小程序端的单例对象不允许跨页面使用）。
@@ -9609,7 +9609,7 @@ wx.connectSocket({
   protocols: ['protocol1']
 })
 ``` */
-        connectSocket(option: ConnectSocketOption): SocketTask
+        connectSocket(option: ConnectSocketOption): Promise<GeneralCallbackResult>
         /** [[UDPSocket](https://developers.weixin.qq.com/miniprogram/dev/api/network/udp/UDPSocket.html) wx.createUDPSocket()](https://developers.weixin.qq.com/miniprogram/dev/api/network/udp/wx.createUDPSocket.html)
          *
          * 创建一个 UDP Socket 实例。使用前请注意阅读[相关说明](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html)。
@@ -9648,7 +9648,7 @@ wx.chooseImage({
   }
 })
 ``` */
-        uploadFile(option: UploadFileOption): UploadTask
+        uploadFile(option: UploadFileOption): Promise<UploadFileSuccessCallbackResult>
         /** [[VideoContext](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/VideoContext.html) wx.createVideoContext(string id, Object this)](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.createVideoContext.html)
          *
          * 创建 [video](https://developers.weixin.qq.com/miniprogram/dev/component/video.html) 上下文 [VideoContext](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/VideoContext.html) 对象。 */
@@ -9780,13 +9780,13 @@ wx.addCard({
 ```
 *
 * 最低基础库： `1.1.0` */
-        addCard(option: AddCardOption): void
+        addCard(option: AddCardOption): Promise<AddCardSuccessCallbackResult>
         /** [wx.addPhoneContact(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/contact/wx.addPhoneContact.html)
          *
          * 添加手机通讯录联系人。用户可以选择将该表单以「新增联系人」或「添加到已有联系人」的方式，写入手机系统通讯录。
          *
          * 最低基础库： `1.2.0` */
-        addPhoneContact(option: AddPhoneContactOption): void
+        addPhoneContact(option: AddPhoneContactOption): Promise<GeneralCallbackResult>
         /** [wx.authorize(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/authorize/wx.authorize.html)
 *
 * 提前向用户发起授权请求。调用后会立刻弹窗询问用户是否同意授权小程序使用某项功能或获取用户的某些数据，但不会实际调用对应接口。如果用户之前已经同意授权，则不会出现弹窗，直接返回成功。更多用法详见 [用户授权](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html)。
@@ -9812,7 +9812,7 @@ wx.getSetting({
 ```
 *
 * 最低基础库： `1.2.0` */
-        authorize(option: AuthorizeOption): void
+        authorize(option: AuthorizeOption): Promise<GeneralCallbackResult>
         /** [wx.canvasGetImageData(Object object, Object this)](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasGetImageData.html)
 *
 * 获取 canvas 区域隐含的像素数据。
@@ -9881,7 +9881,7 @@ wx.checkIsSoterEnrolledInDevice({
 * 最低基础库： `1.6.0` */
         checkIsSoterEnrolledInDevice(
             option: CheckIsSoterEnrolledInDeviceOption,
-        ): void
+        ): Promise<CheckIsSoterEnrolledInDeviceSuccessCallbackResult>
         /** [wx.checkIsSupportSoterAuthentication(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/soter/wx.checkIsSupportSoterAuthentication.html)
 *
 * 获取本机支持的 SOTER 生物认证方式
@@ -9902,7 +9902,7 @@ wx.checkIsSupportSoterAuthentication({
 * 最低基础库： `1.5.0` */
         checkIsSupportSoterAuthentication(
             option?: CheckIsSupportSoterAuthenticationOption,
-        ): void
+        ): Promise<CheckIsSupportSoterAuthenticationSuccessCallbackResult>
         /** [wx.checkSession(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.checkSession.html)
 *
 * 检查登录态是否过期。
@@ -9925,7 +9925,7 @@ wx.checkSession({
   }
 })
 ``` */
-        checkSession(option?: CheckSessionOption): void
+        checkSession(option?: CheckSessionOption): Promise<GeneralCallbackResult>
         /** [wx.chooseAddress(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/address/wx.chooseAddress.html)
 *
 * 获取用户收货地址。调起用户编辑收货地址原生界面，并在编辑完成后返回用户选择的地址。
@@ -9950,7 +9950,7 @@ wx.chooseAddress({
 ```
 *
 * 最低基础库： `1.1.0` */
-        chooseAddress(option?: ChooseAddressOption): void
+        chooseAddress(option?: ChooseAddressOption): Promise<ChooseAddressSuccessCallbackResult>
         /** [wx.chooseImage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)
 *
 * 从本地相册选择图片或使用相机拍照。
@@ -9968,7 +9968,7 @@ wx.chooseImage({
   }
 })
 ``` */
-        chooseImage(option: ChooseImageOption): void
+        chooseImage(option: ChooseImageOption): Promise<ChooseImageSuccessCallbackResult>
         /** [wx.chooseInvoice(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/invoice/wx.chooseInvoice.html)
          *
          * 选择用户已有的发票。
@@ -9980,7 +9980,7 @@ wx.chooseImage({
          * 其中 `access_token` 的获取请参考[auth.getAccessToken](https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-token/auth.getAccessToken.html)文档
          *
          * 最低基础库： `2.3.0` */
-        chooseInvoice(option?: ChooseInvoiceOption): void
+        chooseInvoice(option?: ChooseInvoiceOption): Promise<ChooseInvoiceSuccessCallbackResult>
         /** [wx.chooseInvoiceTitle(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/invoice/wx.chooseInvoiceTitle.html)
 *
 * 选择用户的发票抬头。当前小程序必须关联一个公众号，且这个公众号是完成了[微信认证](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1496554031_RD4xe)的，才能调用 chooseInvoiceTitle。
@@ -9997,11 +9997,11 @@ wx.chooseInvoiceTitle({
 ```
 *
 * 最低基础库： `1.5.0` */
-        chooseInvoiceTitle(option?: ChooseInvoiceTitleOption): void
+        chooseInvoiceTitle(option?: ChooseInvoiceTitleOption): Promise<ChooseInvoiceTitleSuccessCallbackResult>
         /** [wx.chooseLocation(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.chooseLocation.html)
          *
          * 打开地图选择位置。 */
-        chooseLocation(option: ChooseLocationOption): void
+        chooseLocation(option: ChooseLocationOption): Promise<ChooseLocationSuccessCallbackResult>
         /** [wx.chooseMedia(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)
 *
 * 拍摄或从手机相册中选择图片或视频。
@@ -10043,7 +10043,7 @@ wx.chooseMessageFile({
 ```
 *
 * 最低基础库： `2.5.0` */
-        chooseMessageFile(option: ChooseMessageFileOption): void
+        chooseMessageFile(option: ChooseMessageFileOption): Promise<ChooseMessageFileSuccessCallbackResult>
         /** [wx.chooseVideo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)
 *
 * 拍摄视频或从手机相册中选视频。
@@ -10061,7 +10061,7 @@ wx.chooseVideo({
   }
 })
 ``` */
-        chooseVideo(option: ChooseVideoOption): void
+        chooseVideo(option: ChooseVideoOption): Promise<ChooseVideoSuccessCallbackResult>
         /** [wx.clearStorage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.clearStorage.html)
 *
 * 清理本地数据缓存
@@ -10080,7 +10080,7 @@ try {
   // Do something when catch error
 }
 ``` */
-        clearStorage(option?: ClearStorageOption): void
+        clearStorage(option?: ClearStorageOption): Promise<GeneralCallbackResult>
         /** [wx.clearStorageSync()](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.clearStorageSync.html)
 *
 * [wx.clearStorage](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.clearStorage.html) 的同步版本
@@ -10118,7 +10118,7 @@ wx.closeBLEConnection({
 ```
 *
 * 最低基础库： `1.1.0` */
-        closeBLEConnection(option: CloseBLEConnectionOption): void
+        closeBLEConnection(option: CloseBLEConnectionOption): Promise<BluetoothError>
         /** [wx.closeBluetoothAdapter(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.closeBluetoothAdapter.html)
 *
 * 关闭蓝牙模块。调用该方法将断开所有已建立的连接并释放系统资源。建议在使用蓝牙流程后，与 [wx.openBluetoothAdapter](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.openBluetoothAdapter.html) 成对调用。
@@ -10136,7 +10136,7 @@ wx.closeBluetoothAdapter({
 ```
 *
 * 最低基础库： `1.1.0` */
-        closeBluetoothAdapter(option?: CloseBluetoothAdapterOption): void
+        closeBluetoothAdapter(option?: CloseBluetoothAdapterOption): Promise<BluetoothError>
         /** [wx.closeSocket(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.closeSocket.html)
 *
 * 关闭 WebSocket 连接
@@ -10160,7 +10160,7 @@ wx.onSocketClose(function(res) {
   console.log('WebSocket 已关闭！')
 })
 ``` */
-        closeSocket(option?: CloseSocketOption): void
+        closeSocket(option?: CloseSocketOption): Promise<GeneralCallbackResult>
         /** [wx.compressImage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.compressImage.html)
 *
 * 压缩图片接口，可选压缩质量
@@ -10176,7 +10176,7 @@ wx.compressImage({
 ```
 *
 * 最低基础库： `2.4.0` */
-        compressImage(option: CompressImageOption): void
+        compressImage(option: CompressImageOption): Promise<CompressImageSuccessCallbackResult>
         /** [wx.connectWifi(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.connectWifi.html)
 *
 * 连接 Wi-Fi。若已知 Wi-Fi 信息，可以直接利用该接口连接。仅 Android 与 iOS 11 以上版本支持。
@@ -10195,7 +10195,7 @@ wx.connectWifi({
 ```
 *
 * 最低基础库： `1.6.0` */
-        connectWifi(option: ConnectWifiOption): void
+        connectWifi(option: ConnectWifiOption): Promise<WifiError>
         /** [wx.createBLEConnection(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth-ble/wx.createBLEConnection.html)
 *
 * 连接低功耗蓝牙设备。
@@ -10224,13 +10224,13 @@ wx.createBLEConnection({
 ```
 *
 * 最低基础库： `1.1.0` */
-        createBLEConnection(option: CreateBLEConnectionOption): void
+        createBLEConnection(option: CreateBLEConnectionOption): Promise<BluetoothError>
         /** [wx.getAvailableAudioSources(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.getAvailableAudioSources.html)
          *
          * 获取当前支持的音频输入源
          *
          * 最低基础库： `2.1.0` */
-        getAvailableAudioSources(option?: GetAvailableAudioSourcesOption): void
+        getAvailableAudioSources(option?: GetAvailableAudioSourcesOption): Promise<GetAvailableAudioSourcesSuccessCallbackResult>
         /** [wx.getBLEDeviceCharacteristics(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth-ble/wx.getBLEDeviceCharacteristics.html)
 *
 * 获取蓝牙设备某个服务中所有特征值(characteristic)。
@@ -10254,7 +10254,7 @@ wx.getBLEDeviceCharacteristics({
 * 最低基础库： `1.1.0` */
         getBLEDeviceCharacteristics(
             option: GetBLEDeviceCharacteristicsOption,
-        ): void
+        ): Promise<GetBLEDeviceCharacteristicsSuccessCallbackResult>
         /** [wx.getBLEDeviceServices(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth-ble/wx.getBLEDeviceServices.html)
 *
 * 获取蓝牙设备所有服务(service)。
@@ -10274,7 +10274,7 @@ wx.getBLEDeviceServices({
 ```
 *
 * 最低基础库： `1.1.0` */
-        getBLEDeviceServices(option: GetBLEDeviceServicesOption): void
+        getBLEDeviceServices(option: GetBLEDeviceServicesOption): Promise<GetBLEDeviceServicesSuccessCallbackResult>
         /** [wx.getBackgroundAudioPlayerState(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.getBackgroundAudioPlayerState.html)
 *
 * 获取后台音乐播放状态。
@@ -10295,7 +10295,7 @@ wx.getBackgroundAudioPlayerState({
 ``` */
         getBackgroundAudioPlayerState(
             option?: GetBackgroundAudioPlayerStateOption,
-        ): void
+        ): Promise<GetBackgroundAudioPlayerStateSuccessCallbackResult>
         /** [wx.getBackgroundFetchData(object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/background-fetch/wx.getBackgroundFetchData.html)
          *
          * 拉取 backgroundFetch 客户端缓存数据
@@ -10317,7 +10317,7 @@ wx.getBackgroundAudioPlayerState({
          * 获取所有已搜索到的 iBeacon 设备
          *
          * 最低基础库： `1.2.0` */
-        getBeacons(option?: GetBeaconsOption): void
+        getBeacons(option?: GetBeaconsOption): Promise<GetBeaconsSuccessCallbackResult>
         /** [wx.getBluetoothAdapterState(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.getBluetoothAdapterState.html)
 *
 * 获取本机蓝牙适配器状态。
@@ -10335,7 +10335,7 @@ wx.getBluetoothAdapterState({
 ```
 *
 * 最低基础库： `1.1.0` */
-        getBluetoothAdapterState(option?: GetBluetoothAdapterStateOption): void
+        getBluetoothAdapterState(option?: GetBluetoothAdapterStateOption): Promise<GetBluetoothAdapterStateSuccessCallbackResult>
         /** [wx.getBluetoothDevices(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.getBluetoothDevices.html)
 *
 * 获取在蓝牙模块生效期间所有已发现的蓝牙设备。包括已经和本机处于连接状态的设备。
@@ -10373,7 +10373,7 @@ wx.getBluetoothDevices({
 * - 蓝牙设备在被搜索到时，系统返回的 name 字段一般为广播包中的 LocalName 字段中的设备名称，而如果与蓝牙设备建立连接，系统返回的 name 字段会改为从蓝牙设备上获取到的 `GattName`。若需要动态改变设备名称并展示，建议使用 `localName` 字段。
 *
 * 最低基础库： `1.1.0` */
-        getBluetoothDevices(option?: GetBluetoothDevicesOption): void
+        getBluetoothDevices(option?: GetBluetoothDevicesOption): Promise<GetBluetoothDevicesSuccessCallbackResult>
         /** [wx.getClipboardData(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/clipboard/wx.getClipboardData.html)
 *
 * 获取系统剪贴板的内容
@@ -10390,7 +10390,7 @@ wx.getClipboardData({
 ```
 *
 * 最低基础库： `1.1.0` */
-        getClipboardData(option?: GetClipboardDataOption): void
+        getClipboardData(option?: GetClipboardDataOption): Promise<GetClipboardDataSuccessCallbackOption>
         /** [wx.getConnectedBluetoothDevices(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.getConnectedBluetoothDevices.html)
 *
 * 根据 uuid 获取处于已连接状态的设备。
@@ -10410,13 +10410,13 @@ wx.getConnectedBluetoothDevices({
 * 最低基础库： `1.1.0` */
         getConnectedBluetoothDevices(
             option: GetConnectedBluetoothDevicesOption,
-        ): void
+        ): Promise<GetConnectedBluetoothDevicesSuccessCallbackResult>
         /** [wx.getConnectedWifi(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.getConnectedWifi.html)
          *
          * 获取已连接中的 Wi-Fi 信息。
          *
          * 最低基础库： `1.6.0` */
-        getConnectedWifi(option?: GetConnectedWifiOption): void
+        getConnectedWifi(option?: GetConnectedWifiOption): Promise<GetConnectedWifiSuccessCallbackResult>
         /** [wx.getExtConfig(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ext/wx.getExtConfig.html)
 *
 * 获取[第三方平台](https://developers.weixin.qq.com/miniprogram/dev/devtools/ext.html)自定义的数据字段。
@@ -10439,7 +10439,7 @@ if (wx.getExtConfig) {
 ```
 *
 * 最低基础库： `1.1.0` */
-        getExtConfig(option?: GetExtConfigOption): void
+        getExtConfig(option?: GetExtConfigOption): Promise<GetExtConfigSuccessCallbackResult>
         /** [wx.getFileInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.getFileInfo.html)
 *
 * 获取文件信息
@@ -10474,7 +10474,7 @@ wx.getHCEState({
 ```
 *
 * 最低基础库： `1.7.0` */
-        getHCEState(option?: GetHCEStateOption): void
+        getHCEState(option?: GetHCEStateOption): Promise<NFCError>
         /** [wx.getImageInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.getImageInfo.html)
 *
 * 获取图片信息。网络图片需先配置download域名才能生效。
@@ -10505,7 +10505,7 @@ wx.chooseImage({
   }
 })
 ``` */
-        getImageInfo(option: GetImageInfoOption): void
+        getImageInfo(option: GetImageInfoOption): Promise<GetImageInfoSuccessCallbackResult>
         /** [wx.getLocation(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.getLocation.html)
 *
 * 获取当前的地理位置、速度。当用户离开小程序后，此接口无法调用。开启高精度定位，接口耗时会增加，可指定 highAccuracyExpireTime 作为超时时间。
@@ -10530,7 +10530,7 @@ wx.chooseImage({
 *
 * - 工具中定位模拟使用IP定位，可能会有一定误差。且工具目前仅支持 gcj02 坐标。
 * - 使用第三方服务进行逆地址解析时，请确认第三方服务默认的坐标系，正确进行坐标转换。 */
-        getLocation(option: GetLocationOption): void
+        getLocation(option: GetLocationOption): Promise<GetLocationSuccessCallbackResult>
         /** [wx.getNetworkType(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/network/wx.getNetworkType.html)
 *
 * 获取网络类型
@@ -10545,7 +10545,7 @@ wx.getNetworkType({
   }
 })
 ``` */
-        getNetworkType(option?: GetNetworkTypeOption): void
+        getNetworkType(option?: GetNetworkTypeOption): Promise<GetNetworkTypeSuccessCallbackResult>
         /** [wx.getSavedFileInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.getSavedFileInfo.html)
 *
 * 获取本地文件的文件信息。此接口只能用于获取已保存到本地的文件，若需要获取临时文件信息，请使用 [wx.getFileInfo()](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.getFileInfo.html) 接口。
@@ -10560,7 +10560,7 @@ wx.getSavedFileList({
   }
 })
 ``` */
-        getSavedFileInfo(option: GetSavedFileInfoOption): void
+        getSavedFileInfo(option: GetSavedFileInfoOption): Promise<GetSavedFileInfoSuccessCallbackResult>
         /** [wx.getSavedFileList(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.getSavedFileList.html)
 *
 * 获取该小程序下已保存的本地缓存文件列表
@@ -10586,7 +10586,7 @@ wx.getSavedFileList({
          * - 若安卓系统设置中开启了自动调节亮度功能，则屏幕亮度会根据光线自动调整，该接口仅能获取自动调节亮度之前的值，而非实时的亮度值。
          *
          * 最低基础库： `1.2.0` */
-        getScreenBrightness(option?: GetScreenBrightnessOption): void
+        getScreenBrightness(option?: GetScreenBrightnessOption): Promise<GetScreenBrightnessSuccessCallbackOption>
         /** [wx.getSelectedTextRange(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/keyboard/wx.getSelectedTextRange.html)
 *
 * 在input、textarea等focus之后，获取输入框的光标位置。注意：只有在focus的时候调用此接口才有效。
@@ -10647,7 +10647,7 @@ wx.getSetting({
 ```
 *
 * 最低基础库： `1.2.0` */
-        getSetting(option: GetSettingOption): Promise<any>
+        getSetting(option: GetSettingOption): Promise<GetSettingSuccessCallbackResult>
         /** [wx.getShareInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.getShareInfo.html)
 *
 * 获取转发详细信息
@@ -10671,7 +10671,7 @@ wx.getSetting({
 * - 小游戏可以通过 `wx.getGroupInfo` 接口获取群名称
 *
 * 最低基础库： `1.1.0` */
-        getShareInfo(option: GetShareInfoOption): void
+        getShareInfo(option: GetShareInfoOption): Promise<GetShareInfoSuccessCallbackResult>
         /** [wx.getStorage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.getStorage.html)
 *
 * 从本地缓存中异步获取指定 key 的内容
@@ -10698,7 +10698,7 @@ try {
   // Do something when catch error
 }
 ``` */
-        getStorage(option: GetStorageOption): void
+        getStorage(option: GetStorageOption): Promise<GetStorageSuccessCallbackResult>
         /** [wx.getStorageInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.getStorageInfo.html)
 *
 * 异步获取当前storage的相关信息
@@ -10726,7 +10726,7 @@ try {
   // Do something when catch error
 }
 ``` */
-        getStorageInfo(option?: GetStorageInfoOption): void
+        getStorageInfo(option?: GetStorageInfoOption): Promise<GetStorageInfoSuccessCallbackOption>
         /** [wx.getSystemInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/base/system/system-info/wx.getSystemInfo.html)
 *
 * 获取系统信息
@@ -10848,7 +10848,7 @@ Page({
   }
 })
 ``` */
-        getUserInfo(option: GetUserInfoOption): void
+        getUserInfo(option: GetUserInfoOption): Promise<GetUserInfoSuccessCallbackResult>
         /** [wx.getWeRunData(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/werun/wx.getWeRunData.html)
 *
 * 获取用户过去三十天微信运动步数。需要先调用 [wx.login](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html) 接口。步数信息会在用户主动进入小程序时更新。
@@ -10897,7 +10897,7 @@ wx.getWeRunData({
 * | step | number | 微信运动步数 |
 *
 * 最低基础库： `1.2.0` */
-        getWeRunData(option?: GetWeRunDataOption): void
+        getWeRunData(option?: GetWeRunDataOption): Promise<GetWeRunDataSuccessCallbackResult>
         /** [wx.getWifiList(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.getWifiList.html)
          *
          * 请求获取 Wi-Fi 列表。在 `onGetWifiList` 注册的回调中返回 `wifiList` 数据。 **Android 调用前需要 [用户授权](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html) scope.userLocation。**
@@ -10905,7 +10905,7 @@ wx.getWeRunData({
          * iOS 将跳转到系统的 Wi-Fi 界面，Android 不会跳转。 iOS 11.0 及 iOS 11.1 两个版本因系统问题，该方法失效。但在 iOS 11.2 中已修复。
          *
          * 最低基础库： `1.6.0` */
-        getWifiList(option?: GetWifiListOption): void
+        getWifiList(option?: GetWifiListOption): Promise<WifiError>
         /** [wx.hideHomeButton(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.hideHomeButton.html)
          *
          * 隐藏返回首页按钮。微信7.0.7版本起，当用户打开的小程序最底层页面是非首页时，默认展示“返回首页”按钮，开发者可在页面 onShow 中调用 hideHomeButton 进行隐藏。
@@ -10934,11 +10934,11 @@ wx.hideKeyboard({
          * 隐藏 loading 提示框
          *
          * 最低基础库： `1.1.0` */
-        hideLoading(option?: HideLoadingOption): void
+        hideLoading(option?: HideLoadingOption): Promise<GeneralCallbackResult>
         /** [wx.hideNavigationBarLoading(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.hideNavigationBarLoading.html)
          *
          * 在当前页面隐藏导航条加载动画 */
-        hideNavigationBarLoading(option?: HideNavigationBarLoadingOption): void
+        hideNavigationBarLoading(option?: HideNavigationBarLoadingOption): Promise<GeneralCallbackResult>
         /** [wx.hideShareMenu(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.hideShareMenu.html)
 *
 * 隐藏转发按钮
@@ -10951,23 +10951,23 @@ wx.hideShareMenu()
 ```
 *
 * 最低基础库： `1.1.0` */
-        hideShareMenu(option?: HideShareMenuOption): void
+        hideShareMenu(option?: HideShareMenuOption): Promise<GeneralCallbackResult>
         /** [wx.hideTabBar(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.hideTabBar.html)
          *
          * 隐藏 tabBar
          *
          * 最低基础库： `1.9.0` */
-        hideTabBar(option: HideTabBarOption): void
+        hideTabBar(option: HideTabBarOption): Promise<GeneralCallbackResult>
         /** [wx.hideTabBarRedDot(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.hideTabBarRedDot.html)
          *
          * 隐藏 tabBar 某一项的右上角的红点
          *
          * 最低基础库： `1.9.0` */
-        hideTabBarRedDot(option: HideTabBarRedDotOption): void
+        hideTabBarRedDot(option: HideTabBarRedDotOption): Promise<GeneralCallbackResult>
         /** [wx.hideToast(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.hideToast.html)
          *
          * 隐藏消息提示框 */
-        hideToast(option?: HideToastOption): void
+        hideToast(option?: HideToastOption): Promise<GeneralCallbackResult>
         /** [wx.loadFontFace(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html)
 *
 * 动态加载网络字体，文件地址需为下载类型。[2.10.0](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)起支持全局生效，需在 `app.js` 中调用。
@@ -10993,7 +10993,7 @@ wx.loadFontFace({
 ```
 *
 * 最低基础库： `2.1.0` */
-        loadFontFace(option: LoadFontFaceOption): void
+        loadFontFace(option: LoadFontFaceOption): Promise<LoadFontFaceSuccessCallbackResult>
         /** [wx.login(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html)
 *
 * 调用接口获取登录凭证（code）。通过凭证进而换取用户登录态信息，包括用户的唯一标识（openid）及本次登录的会话密钥（session_key）等。用户数据的加解密通讯需要依赖会话密钥完成。更多使用方法详见 [小程序登录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)。
@@ -11018,7 +11018,7 @@ wx.login({
   }
 })
 ``` */
-        login(option?: LoginOption): void
+        login(option?: LoginOption): Promise<LoginSuccessCallbackResult>
         /** [wx.makePhoneCall(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/phone/wx.makePhoneCall.html)
 *
 * 拨打电话
@@ -11031,11 +11031,11 @@ wx.makePhoneCall({
   phoneNumber: '1340000' //仅为示例，并非真实的电话号码
 })
 ``` */
-        makePhoneCall(option: MakePhoneCallOption): void
+        makePhoneCall(option: MakePhoneCallOption): Promise<GeneralCallbackResult>
         /** [wx.navigateBack(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)
          *
          * 关闭当前页面，返回上一页面或多级页面。可通过 [getCurrentPages](https://developers.weixin.qq.com/miniprogram/dev/reference/api/getCurrentPages.html) 获取当前的页面栈，决定需要返回几层。 */
-        navigateBack(option?: NavigateBackOption): void
+        navigateBack(option?: NavigateBackOption): Promise<GeneralCallbackResult>
         /** [wx.navigateBackMiniProgram(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/miniprogram-navigate/wx.navigateBackMiniProgram.html)
 *
 * 返回到上一个小程序。只有在当前小程序是被其他小程序打开时可以调用成功
@@ -11057,7 +11057,7 @@ success(res) {
 ```
 *
 * 最低基础库： `1.3.0` */
-        navigateBackMiniProgram(option: NavigateBackMiniProgramOption): void
+        navigateBackMiniProgram(option: NavigateBackMiniProgramOption): Promise<GeneralCallbackResult>
         /** [wx.navigateTo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html)
 *
 * 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html) 可以返回到原页面。小程序中页面栈最多十层。
@@ -11101,7 +11101,7 @@ Page({
   }
 })
 ``` */
-        navigateTo(option: NavigateToOption): void
+        navigateTo(option: NavigateToOption): Promise<NavigateToSuccessCallbackResult>
         /** [wx.navigateToMiniProgram(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/miniprogram-navigate/wx.navigateToMiniProgram.html)
 *
 * 打开另一个小程序
@@ -11140,7 +11140,7 @@ wx.navigateToMiniProgram({
 ```
 *
 * 最低基础库： `1.3.0` */
-        navigateToMiniProgram(option: NavigateToMiniProgramOption): void
+        navigateToMiniProgram(option: NavigateToMiniProgramOption): Promise<GeneralCallbackResult>
         /** [wx.nextTick(function callback)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/custom-component/wx.nextTick.html)
 *
 * 延迟一部分操作到下一个时间片再执行。（类似于 setTimeout）
@@ -11206,7 +11206,7 @@ wx.notifyBLECharacteristicValueChange({
 * 最低基础库： `1.1.0` */
         notifyBLECharacteristicValueChange(
             option: NotifyBLECharacteristicValueChangeOption,
-        ): void
+        ): Promise<BluetoothError>
         /** [wx.offAccelerometerChange(function callback)](https://developers.weixin.qq.com/miniprogram/dev/api/device/accelerometer/wx.offAccelerometerChange.html)
          *
          * 取消监听加速度数据事件，参数为空，则取消所有的事件监听。
@@ -12010,7 +12010,7 @@ wx.openBluetoothAdapter({
 ```
 *
 * 最低基础库： `1.1.0` */
-        openBluetoothAdapter(option?: OpenBluetoothAdapterOption): void
+        openBluetoothAdapter(option?: OpenBluetoothAdapterOption): Promise<BluetoothError>
         /** [wx.openCard(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/card/wx.openCard.html)
 *
 * 查看微信卡包中的卡券。只有通过 [认证](https://developers.weixin.qq.com/miniprogram/product/renzheng.html) 的小程序或文化互动类目的小游戏才能使用。更多文档请参考 [微信卡券接口文档](https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1490190158&version=1&lang=zh_CN&platform=2)。
@@ -12032,11 +12032,11 @@ wx.openCard({
 ```
 *
 * 最低基础库： `1.1.0` */
-        openCard(option: OpenCardOption): void
+        openCard(option: OpenCardOption): Promise<GeneralCallbackResult>
         /** [wx.openDocument(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.openDocument.html)
          *
          * 新开页面打开文档 */
-        openDocument(option: OpenDocumentOption): void
+        openDocument(option: OpenDocumentOption): Promise<GeneralCallbackResult>
         /** [wx.openLocation(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.openLocation.html)
 *
 * 使用微信内置地图查看位置
@@ -12058,7 +12058,7 @@ wx.openCard({
   }
 })
  ``` */
-        openLocation(option: OpenLocationOption): void
+        openLocation(option: OpenLocationOption): Promise<GeneralCallbackResult>
         /** [wx.openSetting(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/setting/wx.openSetting.html)
 *
 * 调起客户端小程序设置界面，返回用户设置的操作结果。**设置界面只会出现小程序已经向用户请求过的[权限](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html)**。
@@ -12082,7 +12082,7 @@ wx.openSetting({
 ```
 *
 * 最低基础库： `1.1.0` */
-        openSetting(option?: OpenSettingOption): void
+        openSetting(option?: OpenSettingOption): Promise<OpenSettingSuccessCallbackResult>
         /** [wx.pageScrollTo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/wx.pageScrollTo.html)
 *
 * 将页面滚动到目标位置，支持选择器和滚动距离两种方式定位
@@ -12110,7 +12110,7 @@ wx.pageScrollTo({
 ```
 *
 * 最低基础库： `1.4.0` */
-        pageScrollTo(option: PageScrollToOption): void
+        pageScrollTo(option: PageScrollToOption): Promise<GeneralCallbackResult>
         /** [wx.pauseBackgroundAudio(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.pauseBackgroundAudio.html)
 *
 * 暂停播放音乐。
@@ -12121,7 +12121,7 @@ wx.pageScrollTo({
 * ```js
 wx.pauseBackgroundAudio()
 ``` */
-        pauseBackgroundAudio(option?: PauseBackgroundAudioOption): void
+        pauseBackgroundAudio(option?: PauseBackgroundAudioOption): Promise<GeneralCallbackResult>
         /** [wx.pauseVoice(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.pauseVoice.html)
 *
 * 暂停正在播放的语音。再次调用 [wx.playVoice](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.playVoice.html) 播放同一个文件时，会从暂停处开始播放。如果想从头开始播放，需要先调用 [wx.stopVoice](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.stopVoice.html)。
@@ -12141,7 +12141,7 @@ wx.startRecord({
   }
 })
 ``` */
-        pauseVoice(option?: PauseVoiceOption): void
+        pauseVoice(option?: PauseVoiceOption): Promise<GeneralCallbackResult>
         /** [wx.playBackgroundAudio(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.playBackgroundAudio.html)
 *
 * 使用后台播放器播放音乐。对于微信客户端来说，只能同时有一个后台音乐在播放。当用户离开小程序后，音乐将暂停播放；当用户在其他小程序占用了音乐播放器，原有小程序内的音乐将停止播放。
@@ -12156,7 +12156,7 @@ wx.playBackgroundAudio({
   coverImgUrl: ''
 })
 ``` */
-        playBackgroundAudio(option: PlayBackgroundAudioOption): void
+        playBackgroundAudio(option: PlayBackgroundAudioOption): Promise<GeneralCallbackResult>
         /** [wx.playVoice(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.playVoice.html)
 *
 * 开始播放语音。同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放。
@@ -12175,7 +12175,7 @@ wx.startRecord({
   }
 })
 ``` */
-        playVoice(option: PlayVoiceOption): void
+        playVoice(option: PlayVoiceOption): Promise<GeneralCallbackResult>
         /** [wx.previewImage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewImage.html)
 *
 * 在新页面中全屏预览图片。预览的过程中用户可以进行保存图片、发送给朋友等操作。
@@ -12189,7 +12189,7 @@ wx.previewImage({
   urls: [] // 需要预览的图片http链接列表
 })
 ``` */
-        previewImage(option: PreviewImageOption): void
+        previewImage(option: PreviewImageOption): Promise<GeneralCallbackResult>
         /** [wx.reLaunch(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.reLaunch.html)
 *
 * 关闭所有页面，打开到应用内的某个页面
@@ -12213,7 +12213,7 @@ wx.reLaunch({
 * ```
 *
 * 最低基础库： `1.1.0` */
-        reLaunch(option: ReLaunchOption): void
+        reLaunch(option: ReLaunchOption): Promise<GeneralCallbackResult>
         /** [wx.readBLECharacteristicValue(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth-ble/wx.readBLECharacteristicValue.html)
 *
 * 读取低功耗蓝牙设备的特征值的二进制数据值。注意：必须设备的特征值支持 read 才可以成功调用。
@@ -12250,7 +12250,7 @@ wx.readBLECharacteristicValue({
 * 最低基础库： `1.1.0` */
         readBLECharacteristicValue(
             option: ReadBLECharacteristicValueOption,
-        ): void
+        ): Promise<BluetoothError>
         /** [wx.redirectTo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.redirectTo.html)
 *
 * 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
@@ -12263,7 +12263,7 @@ wx.redirectTo({
   url: 'test?id=1'
 })
 ``` */
-        redirectTo(option: RedirectToOption): void
+        redirectTo(option: RedirectToOption): Promise<GeneralCallbackResult>
         /** [wx.removeSavedFile(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/file/wx.removeSavedFile.html)
 *
 * 删除本地缓存文件
@@ -12285,7 +12285,7 @@ wx.getSavedFileList({
  }
 })
 ``` */
-        removeSavedFile(option: WxRemoveSavedFileOption): void
+        removeSavedFile(option: WxRemoveSavedFileOption): Promise<GeneralCallbackResult>
         /** [wx.removeStorage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.removeStorage.html)
 *
 * 从本地缓存中移除指定 key
@@ -12309,7 +12309,7 @@ try {
   // Do something when catch error
 }
 ``` */
-        removeStorage(option: RemoveStorageOption): void
+        removeStorage(option: RemoveStorageOption): Promise<GeneralCallbackResult>
         /** [wx.removeStorageSync(string key)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.removeStorageSync.html)
 *
 * [wx.removeStorage](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.removeStorage.html) 的同步版本
@@ -12342,7 +12342,7 @@ try {
          * 移除 tabBar 某一项右上角的文本
          *
          * 最低基础库： `1.9.0` */
-        removeTabBarBadge(option: RemoveTabBarBadgeOption): void
+        removeTabBarBadge(option: RemoveTabBarBadgeOption): Promise<GeneralCallbackResult>
         /** [wx.reportAnalytics(string eventName, Object data)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/data-analysis/wx.reportAnalytics.html)
 *
 * 自定义分析数据上报接口。使用前，需要在小程序管理后台自定义分析中新建事件，配置好事件名与字段。
@@ -12421,7 +12421,7 @@ wx.requestPayment({
   fail (res) { }
 })
 ``` */
-        requestPayment(option: RequestPaymentOption): void
+        requestPayment(option: RequestPaymentOption): Promise<GeneralCallbackResult>
         /** [wx.requestSubscribeMessage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html)
 *
 * 调起客户端小程序订阅消息界面，返回用户订阅消息的操作结果。当用户勾选了订阅面板中的“总是保持以上选择，不再询问”时，模板消息会被添加到用户的小程序设置页，通过 [wx.getSetting](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/setting/wx.getSetting.html) 接口可获取用户对相关模板消息的订阅状态。
@@ -12501,7 +12501,7 @@ wx.saveImageToPhotosAlbum({
 ```
 *
 * 最低基础库： `1.2.0` */
-        saveImageToPhotosAlbum(option: SaveImageToPhotosAlbumOption): void
+        saveImageToPhotosAlbum(option: SaveImageToPhotosAlbumOption): Promise<GeneralCallbackResult>
         /** [wx.saveVideoToPhotosAlbum(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.saveVideoToPhotosAlbum.html)
 *
 * 保存视频到系统相册。支持mp4视频格式。
@@ -12519,7 +12519,7 @@ wx.saveVideoToPhotosAlbum({
 ```
 *
 * 最低基础库： `1.2.0` */
-        saveVideoToPhotosAlbum(option: SaveVideoToPhotosAlbumOption): void
+        saveVideoToPhotosAlbum(option: SaveVideoToPhotosAlbumOption): Promise<GeneralCallbackResult>
         /** [wx.scanCode(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/scan/wx.scanCode.html)
 *
 * 调起客户端扫码界面进行扫码
@@ -12543,7 +12543,7 @@ wx.scanCode({
   }
 })
 ``` */
-        scanCode(option: ScanCodeOption): void
+        scanCode(option: ScanCodeOption): Promise<ScanCodeSuccessCallbackResult>
         /** [wx.seekBackgroundAudio(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/background-audio/wx.seekBackgroundAudio.html)
 *
 * 控制音乐播放进度。
@@ -12556,7 +12556,7 @@ wx.seekBackgroundAudio({
   position: 30
 })
 ``` */
-        seekBackgroundAudio(option: SeekBackgroundAudioOption): void
+        seekBackgroundAudio(option: SeekBackgroundAudioOption): Promise<GeneralCallbackResult>
         /** [wx.sendHCEMessage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/nfc/wx.sendHCEMessage.html)
 *
 * 发送 NFC 消息。仅在安卓系统下有效。
@@ -12581,7 +12581,7 @@ wx.startHCE({
 ```
 *
 * 最低基础库： `1.7.0` */
-        sendHCEMessage(option: SendHCEMessageOption): void
+        sendHCEMessage(option: SendHCEMessageOption): Promise<NFCError>
         /** [wx.sendSocketMessage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.sendSocketMessage.html)
 *
 * 通过 WebSocket 连接发送数据。需要先 wx.connectSocket，并在 wx.onSocketOpen 回调之后才能发送。
@@ -12614,7 +12614,7 @@ function sendSocketMessage(msg) {
   }
 }
 ``` */
-        sendSocketMessage(option: SendSocketMessageOption): void
+        sendSocketMessage(option: SendSocketMessageOption): Promise<GeneralCallbackResult>
         /** [wx.setBackgroundColor(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/background/wx.setBackgroundColor.html)
 *
 * 动态设置窗口的背景色
@@ -12634,7 +12634,7 @@ wx.setBackgroundColor({
 ```
 *
 * 最低基础库： `2.1.0` */
-        setBackgroundColor(option: SetBackgroundColorOption): void
+        setBackgroundColor(option: SetBackgroundColorOption): Promise<GeneralCallbackResult>
         /** [wx.setBackgroundFetchToken(object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/background-fetch/wx.setBackgroundFetchToken.html)
          *
          * 设置自定义登录态，在周期性拉取数据时带上，便于第三方服务器验证请求合法性
@@ -12655,7 +12655,7 @@ wx.setBackgroundTextStyle({
 ```
 *
 * 最低基础库： `2.1.0` */
-        setBackgroundTextStyle(option: SetBackgroundTextStyleOption): void
+        setBackgroundTextStyle(option: SetBackgroundTextStyleOption): Promise<GeneralCallbackResult>
         /** [wx.setClipboardData(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/clipboard/wx.setClipboardData.html)
 *
 * 设置系统剪贴板的内容。调用成功后，会弹出 toast 提示"内容已复制"，持续 1.5s
@@ -12677,7 +12677,7 @@ wx.setClipboardData({
 ```
 *
 * 最低基础库： `1.1.0` */
-        setClipboardData(option: SetClipboardDataOption): void
+        setClipboardData(option: SetClipboardDataOption): Promise<GeneralCallbackResult>
         /** [wx.setEnableDebug(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/base/debug/wx.setEnableDebug.html)
 *
 * 设置是否打开调试开关。此开关对正式版也能生效。
@@ -12709,7 +12709,7 @@ wx.setEnableDebug({
          * 设置 [InnerAudioContext](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/InnerAudioContext.html) 的播放选项。设置之后对当前小程序全局生效。
          *
          * 最低基础库： `2.3.0` */
-        setInnerAudioOption(option: SetInnerAudioOption): void
+        setInnerAudioOption(option: SetInnerAudioOption): Promise<GeneralCallbackResult>
         /** [wx.setKeepScreenOn(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/screen/wx.setKeepScreenOn.html)
 *
 * 设置是否保持常亮状态。仅在当前小程序生效，离开小程序后设置失效。
@@ -12724,13 +12724,13 @@ wx.setKeepScreenOn({
 ```
 *
 * 最低基础库： `1.4.0` */
-        setKeepScreenOn(option: SetKeepScreenOnOption): void
+        setKeepScreenOn(option: SetKeepScreenOnOption): Promise<GeneralCallbackResult>
         /** [wx.setNavigationBarColor(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.setNavigationBarColor.html)
          *
          * 设置页面导航条颜色
          *
          * 最低基础库： `1.4.0` */
-        setNavigationBarColor(option: SetNavigationBarColorOption): void
+        setNavigationBarColor(option: SetNavigationBarColorOption): Promise<GeneralCallbackResult>
         /** [wx.setNavigationBarTitle(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.setNavigationBarTitle.html)
 *
 * 动态设置当前页面的标题
@@ -12743,13 +12743,13 @@ wx.setNavigationBarTitle({
   title: '当前页面'
 })
 ``` */
-        setNavigationBarTitle(option: SetNavigationBarTitleOption): void
+        setNavigationBarTitle(option: SetNavigationBarTitleOption): Promise<GeneralCallbackResult>
         /** [wx.setScreenBrightness(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/screen/wx.setScreenBrightness.html)
          *
          * 设置屏幕亮度
          *
          * 最低基础库： `1.2.0` */
-        setScreenBrightness(option: SetScreenBrightnessOption): void
+        setScreenBrightness(option: SetScreenBrightnessOption): Promise<GeneralCallbackResult>
         /** [wx.setStorage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorage.html)
 *
 * 将数据存储在本地缓存中指定的 key 中。会覆盖掉原来该 key 对应的内容。除非用户主动删除或因存储空间原因被系统清理，否则数据都一直可用。单个 key 允许存储的最大数据长度为 1MB，所有数据存储上限为 10MB。
@@ -12768,7 +12768,7 @@ try {
   wx.setStorageSync('key', 'value')
 } catch (e) { }
 ``` */
-        setStorage(option: SetStorageOption): void
+        setStorage(option: SetStorageOption): Promise<GeneralCallbackResult>
         /** [wx.setStorageSync(string key, any data)](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorageSync.html)
 *
 * [wx.setStorage](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorage.html) 的同步版本
@@ -12808,7 +12808,7 @@ wx.setTabBarBadge({
 ```
 *
 * 最低基础库： `1.9.0` */
-        setTabBarBadge(option: SetTabBarBadgeOption): void
+        setTabBarBadge(option: SetTabBarBadgeOption): Promise<GeneralCallbackResult>
         /** [wx.setTabBarItem(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.setTabBarItem.html)
 *
 * 动态设置 tabBar 某一项的内容，`2.7.0` 起图片支持临时文件和网络文件。
@@ -12826,7 +12826,7 @@ wx.setTabBarItem({
 ```
 *
 * 最低基础库： `1.9.0` */
-        setTabBarItem(option: SetTabBarItemOption): void
+        setTabBarItem(option: SetTabBarItemOption): Promise<GeneralCallbackResult>
         /** [wx.setTabBarStyle(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.setTabBarStyle.html)
 *
 * 动态设置 tabBar 的整体样式
@@ -12844,7 +12844,7 @@ wx.setTabBarStyle({
 ```
 *
 * 最低基础库： `1.9.0` */
-        setTabBarStyle(option?: SetTabBarStyleOption): void
+        setTabBarStyle(option?: SetTabBarStyleOption): Promise<GeneralCallbackResult>
         /** [wx.setTopBarText(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/sticky/wx.setTopBarText.html)
 *
 * 动态设置置顶栏文字内容。只有当前小程序被置顶时能生效，如果当前小程序没有被置顶，也能调用成功，但是不会立即生效，只有在用户将这个小程序置顶后才换上设置的文字内容.
@@ -12864,7 +12864,7 @@ wx.setTopBarText({
 * - 调用成功后，需间隔 5s 才能再次调用此接口，如果在 5s 内再次调用此接口，会回调 fail，errMsg："setTopBarText: fail invoke too frequently"
 *
 * 最低基础库： `1.4.3` */
-        setTopBarText(option: SetTopBarTextOption): void
+        setTopBarText(option: SetTopBarTextOption): Promise<GeneralCallbackResult>
         /** [wx.setWifiList(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.setWifiList.html)
 *
 * 设置 `wifiList` 中 AP 的相关信息。在 `onGetWifiList` 回调后调用，**iOS特有接口**。
@@ -12899,7 +12899,7 @@ wx.getWifiList()
 ```
 *
 * 最低基础库： `1.6.0` */
-        setWifiList(option: SetWifiListOption): void
+        setWifiList(option: SetWifiListOption): Promise<WifiError>
         /** [wx.showActionSheet(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showActionSheet.html)
 *
 * 显示操作菜单
@@ -12924,7 +12924,7 @@ wx.showActionSheet({
 *
 * - Android 6.7.2 以下版本，点击取消或蒙层时，回调 fail, errMsg 为 "fail cancel"；
 * - Android 6.7.2 及以上版本 和 iOS 点击蒙层不会关闭模态弹窗，所以尽量避免使用「取消」分支中实现业务逻辑 */
-        showActionSheet(option: ShowActionSheetOption): void
+        showActionSheet(option: ShowActionSheetOption): Promise<ShowActionSheetSuccessCallbackResult>
         /** [wx.showLoading(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showLoading.html)
 *
 * 显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
@@ -12949,7 +12949,7 @@ setTimeout(function () {
 * - [wx.showLoading](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showLoading.html) 应与 [wx.hideLoading](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.hideLoading.html) 配对使用
 *
 * 最低基础库： `1.1.0` */
-        showLoading(option: ShowLoadingOption): void
+        showLoading(option: ShowLoadingOption): Promise<GeneralCallbackResult>
         /** [wx.showModal(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showModal.html)
 *
 * 显示模态对话框
@@ -12976,11 +12976,11 @@ wx.showModal({
 *
 * - Android 6.7.2 以下版本，点击取消或蒙层时，回调 fail, errMsg 为 "fail cancel"；
 * - Android 6.7.2 及以上版本 和 iOS 点击蒙层不会关闭模态弹窗，所以尽量避免使用「取消」分支中实现业务逻辑 */
-        showModal(option: ShowModalOption): void
+        showModal(option: ShowModalOption): Promise<ShowModalSuccessCallbackResult>
         /** [wx.showNavigationBarLoading(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/navigation-bar/wx.showNavigationBarLoading.html)
          *
          * 在当前页面显示导航条加载动画 */
-        showNavigationBarLoading(option?: ShowNavigationBarLoadingOption): void
+        showNavigationBarLoading(option?: ShowNavigationBarLoadingOption): Promise<GeneralCallbackResult>
         /** [wx.showRedPackage(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/redpackage/wx.showRedPackage.html)
          *
          * 拉取h5领取红包封面页。获取参考红包封面地址参考 [微信红包封面开发平台](https://cover.weixin.qq.com/cgi-bin/mmcover-bin/readtemplate?t=page%2Fdoc%2Fguide%2Fintroduce.html)。
@@ -13001,19 +13001,19 @@ wx.showShareMenu({
 ```
 *
 * 最低基础库： `1.1.0` */
-        showShareMenu(option: ShowShareMenuOption): void
+        showShareMenu(option: ShowShareMenuOption): Promise<GeneralCallbackResult>
         /** [wx.showTabBar(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.showTabBar.html)
          *
          * 显示 tabBar
          *
          * 最低基础库： `1.9.0` */
-        showTabBar(option: ShowTabBarOption): void
+        showTabBar(option: ShowTabBarOption): Promise<GeneralCallbackResult>
         /** [wx.showTabBarRedDot(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.showTabBarRedDot.html)
          *
          * 显示 tabBar 某一项的右上角的红点
          *
          * 最低基础库： `1.9.0` */
-        showTabBarRedDot(option: ShowTabBarRedDotOption): void
+        showTabBarRedDot(option: ShowTabBarRedDotOption): Promise<GeneralCallbackResult>
         /** [wx.showToast(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showToast.html)
 *
 * 显示消息提示框
@@ -13034,7 +13034,7 @@ wx.showToast({
 *
 * - [wx.showLoading](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showLoading.html) 和 [wx.showToast](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showToast.html) 同时只能显示一个
 * - [wx.showToast](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showToast.html) 应与 [wx.hideToast](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.hideToast.html) 配对使用 */
-        showToast(option: ShowToastOption): void
+        showToast(option: ShowToastOption): Promise<GeneralCallbackResult>
         /** [wx.startAccelerometer(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/accelerometer/wx.startAccelerometer.html)
 *
 * 开始监听加速度数据。
@@ -13069,7 +13069,7 @@ wx.startBeaconDiscovery({
 ```
 *
 * 最低基础库： `1.2.0` */
-        startBeaconDiscovery(option: StartBeaconDiscoveryOption): void
+        startBeaconDiscovery(option: StartBeaconDiscoveryOption): Promise<IBeaconError>
         /** [wx.startBluetoothDevicesDiscovery(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.startBluetoothDevicesDiscovery.html)
 *
 * 开始搜寻附近的蓝牙外围设备。**此操作比较耗费系统资源，请在搜索并连接到设备后调用 [wx.stopBluetoothDevicesDiscovery](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.stopBluetoothDevicesDiscovery.html) 方法停止搜索。**
@@ -13092,7 +13092,7 @@ wx.startBluetoothDevicesDiscovery({
 * 最低基础库： `1.1.0` */
         startBluetoothDevicesDiscovery(
             option: StartBluetoothDevicesDiscoveryOption,
-        ): void
+        ): Promise<BluetoothError>
         /** [wx.startCompass(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/compass/wx.startCompass.html)
 *
 * 开始监听罗盘数据
@@ -13105,7 +13105,7 @@ wx.startCompass()
 ```
 *
 * 最低基础库： `1.1.0` */
-        startCompass(option?: StartCompassOption): void
+        startCompass(option?: StartCompassOption): Promise<GeneralCallbackResult>
         /** [wx.startDeviceMotionListening(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/motion/wx.startDeviceMotionListening.html)
          *
          * 开始监听设备方向的变化。
@@ -13113,13 +13113,13 @@ wx.startCompass()
          * 最低基础库： `2.3.0` */
         startDeviceMotionListening(
             option: StartDeviceMotionListeningOption,
-        ): void
+        ): Promise<GeneralCallbackResult>
         /** [wx.startGyroscope(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/gyroscope/wx.startGyroscope.html)
          *
          * 开始监听陀螺仪数据。
          *
          * 最低基础库： `2.3.0` */
-        startGyroscope(option: StartGyroscopeOption): void
+        startGyroscope(option: StartGyroscopeOption): Promise<GeneralCallbackResult>
         /** [wx.startHCE(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/nfc/wx.startHCE.html)
 *
 * 初始化 NFC 模块。
@@ -13137,7 +13137,7 @@ wx.startHCE({
 ```
 *
 * 最低基础库： `1.7.0` */
-        startHCE(option: StartHCEOption): void
+        startHCE(option: StartHCEOption): Promise<NFCError>
         /** [wx.startLocalServiceDiscovery(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/network/mdns/wx.startLocalServiceDiscovery.html)
          *
          * 开始搜索局域网下的 mDNS 服务。搜索的结果会通过 wx.onLocalService* 事件返回。
@@ -13151,7 +13151,7 @@ wx.startHCE({
          * 最低基础库： `2.4.0` */
         startLocalServiceDiscovery(
             option: StartLocalServiceDiscoveryOption,
-        ): void
+        ): Promise<GeneralCallbackResult>
         /** [wx.startLocationUpdate(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.startLocationUpdate.html)
          *
          * 开启小程序进入前台时接收位置消息
@@ -13190,7 +13190,7 @@ wx.startPullDownRefresh()
 ```
 *
 * 最低基础库： `1.5.0` */
-        startPullDownRefresh(option?: StartPullDownRefreshOption): void
+        startPullDownRefresh(option?: StartPullDownRefreshOption): Promise<GeneralCallbackResult>
         /** [wx.startRecord(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/wx.startRecord.html)
 *
 * 开始录音。当主动调用 [wx.stopRecord](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/wx.stopRecord.html)，或者录音超过1分钟时自动结束录音。当用户离开小程序时，此接口无法调用。
@@ -13258,7 +13258,7 @@ wx.startSoterAuthentication({
 ```
 *
 * 最低基础库： `1.5.0` */
-        startSoterAuthentication(option: StartSoterAuthenticationOption): void
+        startSoterAuthentication(option: StartSoterAuthenticationOption): Promise<StartSoterAuthenticationSuccessCallbackResult>
         /** [wx.startWifi(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.startWifi.html)
 *
 * 初始化 Wi-Fi 模块。
@@ -13276,7 +13276,7 @@ wx.startWifi({
 ```
 *
 * 最低基础库： `1.6.0` */
-        startWifi(option?: StartWifiOption): void
+        startWifi(option?: StartWifiOption): Promise<WifiError>
         /** [wx.stopAccelerometer(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/accelerometer/wx.stopAccelerometer.html)
 *
 * 停止监听加速度数据。
@@ -13300,13 +13300,13 @@ wx.stopAccelerometer()
 * ```js
 wx.stopBackgroundAudio()
 ``` */
-        stopBackgroundAudio(option?: StopBackgroundAudioOption): void
+        stopBackgroundAudio(option?: StopBackgroundAudioOption): Promise<GeneralCallbackResult>
         /** [wx.stopBeaconDiscovery(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/ibeacon/wx.stopBeaconDiscovery.html)
          *
          * 停止搜索附近的 iBeacon 设备
          *
          * 最低基础库： `1.2.0` */
-        stopBeaconDiscovery(option?: StopBeaconDiscoveryOption): void
+        stopBeaconDiscovery(option?: StopBeaconDiscoveryOption): Promise<IBeaconError>
         /** [wx.stopBluetoothDevicesDiscovery(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth/wx.stopBluetoothDevicesDiscovery.html)
 *
 * 停止搜寻附近的蓝牙外围设备。若已经找到需要的蓝牙设备并不需要继续搜索时，建议调用该接口停止蓝牙搜索。
@@ -13326,7 +13326,7 @@ wx.stopBluetoothDevicesDiscovery({
 * 最低基础库： `1.1.0` */
         stopBluetoothDevicesDiscovery(
             option?: StopBluetoothDevicesDiscoveryOption,
-        ): void
+        ): Promise<BluetoothError>
         /** [wx.stopCompass(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/compass/wx.stopCompass.html)
 *
 * 停止监听罗盘数据
@@ -13339,7 +13339,7 @@ wx.stopCompass()
 ```
 *
 * 最低基础库： `1.1.0` */
-        stopCompass(option?: StopCompassOption): void
+        stopCompass(option?: StopCompassOption): Promise<GeneralCallbackResult>
         /** [wx.stopDeviceMotionListening(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/motion/wx.stopDeviceMotionListening.html)
          *
          * 停止监听设备方向的变化。
@@ -13347,13 +13347,13 @@ wx.stopCompass()
          * 最低基础库： `2.3.0` */
         stopDeviceMotionListening(
             option?: StopDeviceMotionListeningOption,
-        ): void
+        ): Promise<GeneralCallbackResult>
         /** [wx.stopGyroscope(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/gyroscope/wx.stopGyroscope.html)
          *
          * 停止监听陀螺仪数据。
          *
          * 最低基础库： `2.3.0` */
-        stopGyroscope(option?: StopGyroscopeOption): void
+        stopGyroscope(option?: StopGyroscopeOption): Promise<GeneralCallbackResult>
         /** [wx.stopHCE(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/nfc/wx.stopHCE.html)
 *
 * 关闭 NFC 模块。仅在安卓系统下有效。
@@ -13370,7 +13370,7 @@ wx.stopHCE({
 ```
 *
 * 最低基础库： `1.7.0` */
-        stopHCE(option?: StopHCEOption): void
+        stopHCE(option?: StopHCEOption): Promise<NFCError>
         /** [wx.stopLocalServiceDiscovery(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/network/mdns/wx.stopLocalServiceDiscovery.html)
          *
          * 停止搜索 mDNS 服务
@@ -13378,7 +13378,7 @@ wx.stopHCE({
          * 最低基础库： `2.4.0` */
         stopLocalServiceDiscovery(
             option?: StopLocalServiceDiscoveryOption,
-        ): void
+        ): Promise<GeneralCallbackResult>
         /** [wx.stopLocationUpdate(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.stopLocationUpdate.html)
          *
          * 关闭监听实时位置变化，前后台都停止消息接收
@@ -13401,7 +13401,7 @@ Page({
 ```
 *
 * 最低基础库： `1.5.0` */
-        stopPullDownRefresh(option?: StopPullDownRefreshOption): void
+        stopPullDownRefresh(option?: StopPullDownRefreshOption): Promise<GeneralCallbackResult>
         /** [wx.stopRecord(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/recorder/wx.stopRecord.html)
 *
 * 停止录音。
@@ -13419,7 +13419,7 @@ setTimeout(function () {
   wx.stopRecord() // 结束录音
 }, 10000)
 ``` */
-        stopRecord(option?: WxStopRecordOption): void
+        stopRecord(option?: WxStopRecordOption): Promise<GeneralCallbackResult>
         /** [wx.stopVoice(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/media/audio/wx.stopVoice.html)
 *
 * 结束播放语音。
@@ -13439,7 +13439,7 @@ wx.startRecord({
   }
 })
 ``` */
-        stopVoice(option?: StopVoiceOption): void
+        stopVoice(option?: StopVoiceOption): Promise<GeneralCallbackResult>
         /** [wx.stopWifi(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/wifi/wx.stopWifi.html)
 *
 * 关闭 Wi-Fi 模块。
@@ -13456,7 +13456,7 @@ wx.stopWifi({
 ```
 *
 * 最低基础库： `1.6.0` */
-        stopWifi(option?: StopWifiOption): void
+        stopWifi(option?: StopWifiOption): Promise<WifiError>
         /** [wx.switchTab(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html)
 *
 * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
@@ -13483,7 +13483,7 @@ wx.switchTab({
   url: '/index'
 })
 ``` */
-        switchTab(option: SwitchTabOption): void
+        switchTab(option: SwitchTabOption): Promise<GeneralCallbackResult>
         /** [wx.updateShareMenu(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.updateShareMenu.html)
 *
 * 更新转发属性
@@ -13499,19 +13499,19 @@ wx.updateShareMenu({
 ```
 *
 * 最低基础库： `1.2.0` */
-        updateShareMenu(option: UpdateShareMenuOption): void
+        updateShareMenu(option: UpdateShareMenuOption): Promise<GeneralCallbackResult>
         /** [wx.vibrateLong(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/vibrate/wx.vibrateLong.html)
          *
          * 使手机发生较长时间的振动（400 ms)
          *
          * 最低基础库： `1.2.0` */
-        vibrateLong(option?: VibrateLongOption): void
+        vibrateLong(option?: VibrateLongOption): Promise<GeneralCallbackResult>
         /** [wx.vibrateShort(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/vibrate/wx.vibrateShort.html)
          *
          * 使手机发生较短时间的振动（15 ms）。仅在 iPhone `7 / 7 Plus` 以上及 Android 机型生效
          *
          * 最低基础库： `1.2.0` */
-        vibrateShort(option?: VibrateShortOption): void
+        vibrateShort(option?: VibrateShortOption): Promise<GeneralCallbackResult>
         /** [wx.writeBLECharacteristicValue(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/device/bluetooth-ble/wx.writeBLECharacteristicValue.html)
 *
 * 向低功耗蓝牙设备特征值中写入二进制数据。注意：必须设备的特征值支持 write 才可以成功调用。
@@ -13552,7 +13552,7 @@ wx.writeBLECharacteristicValue({
 * 最低基础库： `1.1.0` */
         writeBLECharacteristicValue(
             option: WriteBLECharacteristicValueOption,
-        ): void /**
+        ): Promise<BluetoothError> /**
 小程序云开发
 */
         cloud: WxCloud /**
@@ -15773,7 +15773,13 @@ wx.writeBLECharacteristicValue({
     type WxStopRecordSuccessCallback = (res: GeneralCallbackResult) => void
 }
 declare const console: WechatMiniprogram.Console
-declare const wx: { pro: WechatMiniprogram.Wx }
+declare const wx: {
+    pro: WechatMiniprogram.Wx,
+    downloadFile(option: WechatMiniprogram.DownloadFileOption): WechatMiniprogram.DownloadTask,
+    request(option: WechatMiniprogram.RequestOption): WechatMiniprogram.RequestTask,
+    connectSocket(option: WechatMiniprogram.ConnectSocketOption): WechatMiniprogram.SocketTask,
+    uploadFile(option: WechatMiniprogram.UploadFileOption): WechatMiniprogram.UploadTask
+}
 declare function require(module: string): any
 declare let module: { exports: any }
 declare let exports: any
