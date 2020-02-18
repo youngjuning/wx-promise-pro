@@ -1,6 +1,6 @@
 {
   "name": "wx-promise-pro",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "强大的、优雅的小程序 Promise 库",
   "main": "dist/wx-promise-pro.js",
   "types": "index.d.ts",
@@ -29,7 +29,7 @@
     "url": "https://github.com/youngjuning/wx-promise-pro/issues"
   },
   "homepage": "https://github.com/youngjuning/wx-promise-pro#readme",
-  "devDependencies":{
+  "devDependencies": {
     "rollup": "^1.28.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
