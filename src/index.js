@@ -16,9 +16,9 @@ export const promisify = (api) => {
   return (args = {}) => {
     return new Promise((resolve, reject) => {
       api({
-        ...args,
+        fail: reject,
         success: resolve,
-        fail: reject
+        ...args,
       })
     })
   }
