@@ -1,6 +1,6 @@
 {
   "name": "wx-promise-pro",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "强大的、优雅的小程序 Promise 库",
   "main": "dist/wx-promise-pro.js",
   "types": "index.d.ts",
