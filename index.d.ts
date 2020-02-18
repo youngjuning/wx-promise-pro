@@ -1,3 +1,3 @@
 /// <reference path="./types/index.d.ts" />
-declare const promisify: (api:Function) => Function
-declare const promisifyAll: (name?: string) => void
+export declare const promisify: (api:Function) => Function
+export declare const promisifyAll: (name?: string) => void
