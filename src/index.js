@@ -24,13 +24,13 @@ export const promisify = (api) => {
   }
 }
 
-export const promisifyAll = (name = 'pro') => {
-  wx[name] = {}
+export const promisifyAll = () => {
+  wx.pro = {}
   Object.keys(wx).forEach(key => {
     if (asyncMethods.indexOf(key) >= 0) {
-      wx[name][key] = promisify(wx[key])
+      wx.pro[key] = promisify(wx[key])
     } else {
-      wx[name][key] = wx[key]
+      wx.pro[key] = wx[key]
     }
   })
 }
