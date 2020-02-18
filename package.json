@@ -2,13 +2,15 @@
   "name": "wx-promise-pro",
   "version": "3.0.2",
   "description": "强大的、优雅的小程序 Promise 库",
-  "main": "wxPromise.min.js",
+  "main": "dist/wx-promise-pro.js",
+  "types": "index.d.ts",
   "scripts": {
-    "postversion": "git push --tags && git push && npm publish"
+    "build": "rollup -c",
+    "postversion": "yarn build && git push --tags && git push && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/youngjuning/wxPromise.git"
+    "url": "git+https://github.com/youngjuning/wx-promise-pro.git"
   },
   "keywords": [
     "promise",
@@ -24,7 +26,14 @@
   "author": "youngjuning",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/youngjuning/wxPromise/issues"
+    "url": "https://github.com/youngjuning/wx-promise-pro/issues"
   },
-  "homepage": "https://github.com/youngjuning/wxPromise#readme"
+  "homepage": "https://github.com/youngjuning/wx-promise-pro#readme",
+  "devDependencies":{
+    "rollup": "^1.28.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.3"
+  }
 }

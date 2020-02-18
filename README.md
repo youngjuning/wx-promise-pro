@@ -1,6 +1,6 @@
 # wx-promise-pro
 
-:sparkles:强大、优雅的小程序异步库:rocket: 小程序promise
+✨强大、优雅的小程序异步库🚀 小程序promise
 
 [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dt/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![Financial Contributors on Open Collective](https://opencollective.com/wx-promise-pro/all/badge.svg?label=financial+contributors)](https://opencollective.com/wx-promise-pro)
 
@@ -8,25 +8,31 @@
 
 ## 优势
 
-- 方便集成：一处引用，处处使用
-- 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下。
-- 支持 `finally` 特性
+- 方便集成：一处引用，处处使用；
+- 把微信小程序所有异步 API promise 化并挂在到`wx.pro` 对象下；
+- 支持 ES2018 `finally` 特性
 
-## 普通使用方法
-
-将 `wxPromise.min.js` copy 到 utils 目录中，然后在 `app.js` 中引入： `import './utils/wxPromise.min.js'`。
-
-## 使用NPM
+## 安装
 
 ```bash
-npm i wx-promise-pro
+$ npm i wx-promise-pro
+# or
+$ yarn add wx-promise-pro
 ```
 
-然后使用 nodejs（`require('wx-promise-pro')`）或者 ES6 Moudle（`import 'wx-promise-pro'`） 的方式引入。
+## 初始化
+
+```js
+import { promisifyAll, promisify } from 'wx-promise-pro'
+// promisify all wx‘s api
+promisifyAll()
+// promisify single api
+promisify(wx.getSystemInfo)().then(console.log)
+```
 
 ## 支持所有的微信小程序异步API
 
-使用 wxPromise 开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持。
+使用 `promisifyAll` 开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持。
 
 **示例代码：**
 
