@@ -1,6 +1,6 @@
 # wx-promise-pro
 
-✨强大、优雅的小程序异步库🚀 小程序promise
+✨强大、优雅的微信小程序异步库🚀
 
 [![npm](https://img.shields.io/npm/v/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![npm](https://img.shields.io/npm/dt/wx-promise-pro.svg)](https://www.npmjs.com/package/wx-promise-pro) [![Financial Contributors on Open Collective](https://opencollective.com/wx-promise-pro/all/badge.svg?label=financial+contributors)](https://opencollective.com/wx-promise-pro)
 
