@@ -31,11 +31,7 @@ promisifyAll()
 promisify(wx.getSystemInfo)().then(console.log)
 ```
 
-## 支持所有的微信小程序异步API
-
-使用 `promisifyAll` 开发者无需关心兼容与否，只要是 `wx` 支持的 api，`wx.pro` 全部支持。
-
-**示例代码：**
+## 示例代码
 
 ```js
 // 演示 wxPromise 的能力
