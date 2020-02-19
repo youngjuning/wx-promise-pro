@@ -49,7 +49,7 @@ wx.pro.request({
 }).catch(err => {
   console.log(err)
 }).finally(() => {
-  wx.hideLoading()
+  wx.pro.hideLoading()
 })
 ```
 
