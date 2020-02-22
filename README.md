@@ -61,6 +61,6 @@ This project exists thanks to all the people who contribute.
 ## Contacts
 
 <center class="half">
-  <img src="https://i.loli.net/2020/02/22/QqJ7gwzisAOhEGC.png" alt="知识星球"/>
-  <img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="500" alt="微信"/>
+  <img src="https://i.loli.net/2020/02/22/AQzLmDPopb1ufsG.png" alt="知识星球"/>
+  <img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="260" alt="微信"/>
 </center>
