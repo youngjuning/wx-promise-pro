@@ -60,4 +60,4 @@ This project exists thanks to all the people who contribute.
 
 ## 知识星球
 
-<img src="https://i.loli.net/2020/02/22/sqv45CV7PizSt2d.png" style="zoom:40%;" />
+![xingqiu.png](https://i.loli.net/2020/02/22/QqJ7gwzisAOhEGC.png)
