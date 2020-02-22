@@ -61,5 +61,5 @@ This project exists thanks to all the people who contribute.
 ## Contacts
 
 <div align="center">
-  <img src="https://i.loli.net/2020/02/22/AQzLmDPopb1ufsG.png" width="260px"/><img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="260px"/> 
+  <img src="https://i.loli.net/2020/02/22/AQzLmDPopb1ufsG.png" width="260px" style="margin-right:50px"/><img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="260px"/>
 </div>
