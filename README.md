@@ -58,8 +58,14 @@ wx.pro.request({
 This project exists thanks to all the people who contribute. 
 <a href="https://github.com/youngjuning/wx-promise-pro/graphs/contributors"><img src="https://opencollective.com/wx-promise-pro/contributors.svg?width=890&button=false" /></a>
 
-## Contacts
+## 知识星球
 
 <div align="center">
-  <img src="https://i.loli.net/2020/02/22/AQzLmDPopb1ufsG.png" width="260px" style="margin-right:50px"/><img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="260px"/>
+  <img src="https://i.loli.net/2020/02/22/AQzLmDPopb1ufsG.png" width="260px"/>
+</div>
+
+## 作者微信
+
+<div align="center">
+  <img src="https://i.loli.net/2020/02/22/q2tLiGYvhIxm3Fl.jpg" width="260px"/>
 </div>
