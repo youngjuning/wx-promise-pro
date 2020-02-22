@@ -34,7 +34,6 @@ promisify(wx.getSystemInfo)().then(console.log)
 ## 示例代码
 
 ```js
-// 演示 wxPromise 的能力
 wx.pro.showLoading({
   title: '加载中',
   mask: true
