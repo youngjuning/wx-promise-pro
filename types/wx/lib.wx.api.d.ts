@@ -1412,7 +1412,7 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
     }
     interface FileSystemManagerSaveFileSuccessCallbackResult {
         /** 存储后的文件路径 (本地路径) */
-        savedFilePath: number
+        savedFilePath: string
         errMsg: string
     }
     interface GetAvailableAudioSourcesOption {
@@ -10647,7 +10647,7 @@ wx.getSetting({
 ```
 *
 * 最低基础库： `1.2.0` */
-        getSetting(option: GetSettingOption): Promise<GetSettingSuccessCallbackResult>
+        getSetting(option?: GetSettingOption): Promise<GetSettingSuccessCallbackResult>
         /** [wx.getShareInfo(Object object)](https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.getShareInfo.html)
 *
 * 获取转发详细信息
@@ -15773,12 +15773,15 @@ wx.writeBLECharacteristicValue({
     type WxStopRecordSuccessCallback = (res: GeneralCallbackResult) => void
 }
 declare const console: WechatMiniprogram.Console
-declare const wx: {
+interface wxInterface extends WechatMiniprogram.Wx {
     pro: WechatMiniprogram.Wx,
     downloadFile(option: WechatMiniprogram.DownloadFileOption): WechatMiniprogram.DownloadTask,
     request(option: WechatMiniprogram.RequestOption): WechatMiniprogram.RequestTask,
     connectSocket(option: WechatMiniprogram.ConnectSocketOption): WechatMiniprogram.SocketTask,
     uploadFile(option: WechatMiniprogram.UploadFileOption): WechatMiniprogram.UploadTask
+}
+declare const wx: {
+    
 }
 declare function require(module: string): any
 declare let module: { exports: any }
