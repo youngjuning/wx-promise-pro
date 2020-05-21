@@ -15780,9 +15780,7 @@ interface wxInterface extends WechatMiniprogram.Wx {
     connectSocket(option: WechatMiniprogram.ConnectSocketOption): WechatMiniprogram.SocketTask,
     uploadFile(option: WechatMiniprogram.UploadFileOption): WechatMiniprogram.UploadTask
 }
-declare const wx: {
-    
-}
+declare const wx: wxInterface
 declare function require(module: string): any
 declare let module: { exports: any }
 declare let exports: any
