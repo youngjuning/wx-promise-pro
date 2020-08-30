@@ -18,7 +18,7 @@
 > 你也可以直接把 `dist` 目录下的 `wx-promise-pro.js` 拷贝到项目里使用
 
 ```bash
-$ npm i wx-promise-pro
+$ npm i wx-promise-pro -S
 # or
 $ yarn add wx-promise-pro
 ```
