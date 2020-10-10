@@ -72,4 +72,3 @@ This project exists thanks to all the people who contribute.
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-<a href="https://github.com/youngjuning/wx-promise-pro/graphs/contributors"><img src="https://opencollective.com/wx-promise-pro/contributors.svg?width=890&button=false" /></a>
