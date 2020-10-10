@@ -6,6 +6,15 @@
   "commit": false,
   "contributors": [
     {
+      "login": "youngjuning",
+      "name": "杨俊宁",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/13204332?s=60&v=4",
+      "profile": "https://github.com/youngjuning",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "wss534857356",
       "name": "Shenshun Weng",
       "avatar_url": "https://avatars3.githubusercontent.com/u/13134422?v=4",
