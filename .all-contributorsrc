@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "wss534857356",
+      "name": "Shenshun Weng",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13134422?v=4",
+      "profile": "https://github.com/wss534857356",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "wx-promise-pro",
+  "projectOwner": "youngjuning",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
