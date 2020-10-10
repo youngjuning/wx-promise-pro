@@ -1,6 +1,6 @@
 # wx-promise-pro
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ✨强大、优雅的微信小程序异步库🚀
@@ -66,6 +66,7 @@ This project exists thanks to all the people who contribute.
 <table>
   <tr>
     <td align="center"><a href="https://github.com/wss534857356"><img src="https://avatars3.githubusercontent.com/u/13134422?v=4" width="100px;" alt=""/><br /><sub><b>Shenshun Weng</b></sub></a><br /><a href="https://github.com/youngjuning/wx-promise-pro/commits?author=wss534857356" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kala888"><img src="https://avatars2.githubusercontent.com/u/1215976?v=4" width="100px;" alt=""/><br /><sub><b>kala888</b></sub></a><br /><a href="https://github.com/youngjuning/wx-promise-pro/commits?author=kala888" title="Code">💻</a></td>
   </tr>
 </table>
 
