@@ -57,7 +57,7 @@ wx.pro.request({
 })
 ```
 
-## Contributors
+## 贡献者 ✨
 
 感谢如下贡献者的贡献 ([emoji key](https://allcontributors.org/docs/en/emoji-key))：
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
