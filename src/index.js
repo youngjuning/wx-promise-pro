@@ -29,7 +29,7 @@ export const promisifyAll = () => {
   Object.keys(wx).forEach(key => {
     if (asyncMethods.indexOf(key) >= 0) {
       wx.pro[key] = promisify(wx[key])
-    } else {
+    } else if (key !== 'createSignal') { 
       wx.pro[key] = wx[key]
     }
   })
