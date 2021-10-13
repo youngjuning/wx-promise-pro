@@ -53,3 +53,7 @@ wx.pro.request({
   wx.pro.hideLoading()
 })
 ```
+
+## 已知问题
+
+- createSignal、lanDebug 可能会引发报错，所以并没有挂载到 wx.pro 对象上。
